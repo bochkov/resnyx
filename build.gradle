@@ -19,8 +19,9 @@ targetCompatibility = JavaVersion.VERSION_11
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-//    implementation 'com.jcabi:jcabi-http:1.17.2'
-//    implementation 'org.cactoos:cactoos:0.41'
+    implementation 'com.jcabi:jcabi-http:1.17.2'
+    implementation 'org.glassfish.jersey.core:jersey-client:2.28'
+    implementation 'org.cactoos:cactoos:0.41'
     
     compileOnly 'org.projectlombok:lombok:1.18.8'
     annotationProcessor 'org.projectlombok:lombok:1.18.8'

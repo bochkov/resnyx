@@ -1,2 +1,2 @@
-# resnyx_bot
+# resnyx
 resnyx telegram bot

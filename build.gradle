@@ -1,32 +1,64 @@
 plugins {
     id 'java'
-    id 'application'
-    id 'org.springframework.boot' version '2.1.5.RELEASE'
+    id 'com.jfrog.artifactory' version '4.9.5'
+    id 'org.sonarqube' version '2.7.1'
 }
 
 repositories {
     jcenter()
 }
 
+group = 'resnyx'
+version = '1.0'
+
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'maven-publish'
 
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-
     implementation 'com.jcabi:jcabi-http:1.17.2'
     implementation 'org.glassfish.jersey.core:jersey-client:2.28'
+    implementation 'org.glassfish:javax.json:1.0.4'
     implementation 'org.cactoos:cactoos:0.41'
-    
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.9.9'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.9'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.9'
+
     compileOnly 'org.projectlombok:lombok:1.18.8'
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
 
     testImplementation 'junit:junit:4.12'
 }
 
-mainClassName = 'resnyx.App'
+sonarqube {
+    properties {
+        property('sonar.projectKey', 'resnyx')
+    }
+}
+
+artifactory {
+    contextUrl = "${artifactory_contextUrl}"
+    publish {
+        defaults {
+            publications('mavenJava')
+        }
+        repository {
+            repoKey = 'libs-release-local'
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+            maven = true
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}

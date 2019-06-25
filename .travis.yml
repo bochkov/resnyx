@@ -1,30 +1,28 @@
+language: java
+
 branches:
   only:
     - master
 
-sudo: required
-
-language: java
-
 jdk:
- - openjdk11
+  - openjdk11
 
-services:
-  - docker
+before_install:
+  - echo "artifactory_contextUrl=${AR_URL}" >> ~/.gradle/gradle.properties
+  - echo "artifactory_user=${AR_USER}" >> ~/.gradle/gradle.properties
+  - echo "artifactory_password=${AR_PASSWORD}" >> ~/.gradle/gradle.properties
+  - echo "systemProp.sonar.host.url=${SONAR_HOST}" >> ~/.gradle/gradle.properties
+  - echo "systemProp.sonar.login=${SONAR_LOGIN}" >> ~/.gradle/gradle.properties
 
-before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -rf $HOME/.gradle/caches/*/plugin-resolution/
-cache:
-  directories:
-    - $HOME/.gradle/caches
-    - $HOME/.gradle/wrapper
+deploy:
+  provider: releases
+  api_key: ${GH_TOKEN}
+  file_glob: true
+  file: "build/libs/*.jar"
+  skip_cleanup: true
+  on:
+    branch: master
+    tags: true
 
-after_success:
-  - pip install --user awscli
-  - export PATH=$PATH:$HOME/.local/bin
-  - ./gradlew clean build
-  - docker build -t resnyx .
-  - docker tag resnyx:latest 902382300595.dkr.ecr.us-east-1.amazonaws.com/resnyx:latest
-  - eval $(aws ecr get-login --region us-east-1 --no-include-email)
-  - docker push 902382300595.dkr.ecr.us-east-1.amazonaws.com/resnyx:latest
+after_deploy:
+  - ./gradlew clean build sonarqube artifactoryPublish

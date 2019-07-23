@@ -1,13 +1,21 @@
 package resnyx.methods.message;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.apache.http.HttpEntity;
+import org.apache.http.NameValuePair;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
 import resnyx.ReplyMethod;
 import resnyx.Types;
+import resnyx.model.InputFile;
 import resnyx.model.Message;
+
+import java.io.IOException;
 
 /**
  * Use this method to send general files. On success, the sent {@link Message} is returned.
@@ -35,6 +43,9 @@ public final class SendDocument extends ReplyMethod<Message> {
      */
     private String document;
 
+    @JsonIgnore
+    private InputFile document0;
+
     /**
      * Optional. Thumbnail of the file sent; can be ignored if thumbnail generation
      * for the file is supported server-side. The thumbnail should be in JPEG format and
@@ -58,6 +69,12 @@ public final class SendDocument extends ReplyMethod<Message> {
         this.document = document;
     }
 
+    public SendDocument(String token, Long chatId, InputFile document0) {
+        super(token);
+        this.chatId = chatId;
+        this.document0 = document0;
+    }
+
     @Override
     protected String method() {
         return METHOD;
@@ -66,6 +83,25 @@ public final class SendDocument extends ReplyMethod<Message> {
     @Override
     protected TypeReference type() {
         return Types.MESSAGE;
+    }
+
+    @Override
+    protected HttpEntity toHttpEntity() throws IOException {
+        if (document0 != null) {
+            MultipartEntityBuilder entity = MultipartEntityBuilder.create();
+            for (NameValuePair pair : params()) {
+                if (!"document".equals(pair.getName()))
+                    entity.addTextBody(pair.getName(), pair.getValue(), ContentType.TEXT_PLAIN);
+            }
+            entity.addBinaryBody(
+                    "document",
+                    document0.bytes(),
+                    ContentType.DEFAULT_BINARY,
+                    document0.filename()
+            );
+            return entity.build();
+        } else
+            return super.toHttpEntity();
     }
 }
 

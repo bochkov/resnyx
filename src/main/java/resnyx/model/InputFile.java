@@ -1,5 +1,8 @@
 package resnyx.model;
 
+import java.io.IOException;
+import java.nio.file.Files;
+
 /**
  * Sending files
  * There are three ways to send files (photos, stickers, audio, media, etc.):
@@ -21,4 +24,27 @@ package resnyx.model;
  * Other configurations may work but we can't guarantee that they will.
  */
 public final class InputFile {
+
+    private final byte[] bytes;
+    private final String filename;
+
+    public InputFile(java.io.File file) throws IOException {
+        this(
+                Files.readAllBytes(file.toPath()),
+                file.getName()
+        );
+    }
+
+    public InputFile(byte[] bytes, String filename) {
+        this.bytes = bytes;
+        this.filename = filename;
+    }
+
+    public byte[] bytes() {
+        return bytes;
+    }
+
+    public String filename() {
+        return filename;
+    }
 }

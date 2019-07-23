@@ -5,10 +5,15 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jcabi.http.request.JdkRequest;
-import com.jcabi.http.wire.RetryWire;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.http.HttpEntity;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import resnyx.methods.chat.*;
@@ -22,6 +27,8 @@ import resnyx.methods.stickers.*;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -91,7 +98,7 @@ public abstract class TgMethod<T> implements Serializable {
     private static final Logger LOG = LoggerFactory.getLogger(TgMethod.class);
     private static final ObjectMapper MAPPER = new ObjectMapper()
             .setSerializationInclusion(JsonInclude.Include.NON_NULL);
-    private static final TypeReference<Map<String, Object>> MAP_TYPE = new TypeReference<>() {
+    private static final TypeReference<Map<String, String>> MAP_TYPE = new TypeReference<>() {
     };
 
     private String token;
@@ -104,18 +111,31 @@ public abstract class TgMethod<T> implements Serializable {
 
     protected abstract TypeReference type();
 
-    public Answer<T> execute() throws IOException {
+    protected List<NameValuePair> params() {
         Map<String, String> params = MAPPER.convertValue(this, MAP_TYPE);
         LOG.info("{}", params);
-        String json = new JdkRequest("https://api.telegram.org")
-                .method("POST")
-                .uri()
-                .path(String.format("bot%s/%s", token, method()))
-                .queryParams(params)
-                .back()
-                .through(RetryWire.class)
-                .fetch()
-                .body();
+        List<NameValuePair> pairs = new ArrayList<>();
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            pairs.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+        }
+        return pairs;
+    }
+
+    protected HttpEntity toHttpEntity() throws IOException {
+        return new UrlEncodedFormEntity(params());
+    }
+
+    public Answer<T> execute() throws IOException {
+        String json;
+        try (CloseableHttpClient http = HttpClients.createDefault()) {
+            HttpPost post = new HttpPost(
+                    String.format("https://api.telegram.org/bot%s/%s", token, method())
+            );
+            post.setEntity(this.toHttpEntity());
+            json = new String(
+                    http.execute(post).getEntity().getContent().readAllBytes()
+            );
+        }
         LOG.debug("{}", json);
         Answer<T> answer = MAPPER.readValue(json, type());
         if (!answer.getOk()) {

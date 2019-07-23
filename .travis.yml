@@ -1,9 +1,5 @@
 language: java
 
-branches:
-  only:
-    - master
-
 jdk:
   - openjdk11
 
@@ -21,7 +17,6 @@ deploy:
   file: "build/libs/*.jar"
   skip_cleanup: true
   on:
-    branch: master
     tags: true
 
 after_deploy:

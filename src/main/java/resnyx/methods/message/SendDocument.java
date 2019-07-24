@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.apache.commons.codec.Charsets;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.entity.ContentType;
@@ -14,8 +15,6 @@ import resnyx.ReplyMethod;
 import resnyx.Types;
 import resnyx.model.InputFile;
 import resnyx.model.Message;
-
-import java.io.IOException;
 
 /**
  * Use this method to send general files. On success, the sent {@link Message} is returned.
@@ -86,9 +85,10 @@ public final class SendDocument extends ReplyMethod<Message> {
     }
 
     @Override
-    protected HttpEntity toHttpEntity() throws IOException {
+    protected HttpEntity toHttpEntity() {
         if (document0 != null) {
-            MultipartEntityBuilder entity = MultipartEntityBuilder.create();
+            MultipartEntityBuilder entity = MultipartEntityBuilder.create()
+                    .setCharset(Charsets.UTF_8);
             for (NameValuePair pair : params()) {
                 if (!"document".equals(pair.getName()))
                     entity.addTextBody(pair.getName(), pair.getValue(), ContentType.TEXT_PLAIN);

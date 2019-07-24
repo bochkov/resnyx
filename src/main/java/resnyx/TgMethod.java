@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.codec.Charsets;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -27,6 +28,7 @@ import resnyx.methods.stickers.*;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -121,8 +123,8 @@ public abstract class TgMethod<T> implements Serializable {
         return pairs;
     }
 
-    protected HttpEntity toHttpEntity() throws IOException {
-        return new UrlEncodedFormEntity(params());
+    protected HttpEntity toHttpEntity() {
+        return new UrlEncodedFormEntity(params(), Charsets.UTF_8);
     }
 
     public Answer<T> execute() throws IOException {

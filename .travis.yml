@@ -4,11 +4,11 @@ jdk:
   - openjdk11
 
 before_install:
-  - echo "artifactory_contextUrl=${AR_URL}" >> gradle.properties
-  - echo "artifactory_user=${AR_USER}" >> gradle.properties
-  - echo "artifactory_password=${AR_PASSWORD}" >> gradle.properties
-  - echo "systemProp.sonar.host.url=${SONAR_HOST}" >> gradle.properties
-  - echo "systemProp.sonar.login=${SONAR_LOGIN}" >> gradle.properties
+  - echo "artifactory_contextUrl=${AR_URL}" >> ~/.gradle/gradle.properties
+  - echo "artifactory_user=${AR_USER}" >> ~/.gradle/gradle.properties
+  - echo "artifactory_password=${AR_PASSWORD}" >> ~/.gradle/gradle.properties
+  - echo "systemProp.sonar.host.url=${SONAR_HOST}" >> ~/.gradle/gradle.properties
+  - echo "systemProp.sonar.login=${SONAR_LOGIN}" >> ~/.gradle/gradle.properties
 
 deploy:
   provider: releases
@@ -20,4 +20,6 @@ deploy:
     tags: true
 
 after_deploy:
-  - ./gradlew clean build sonarqube artifactoryPublish
+  - ./gradlew build
+  - ./gradlew sonarqube
+  - ./gradlew artifactoryPublish

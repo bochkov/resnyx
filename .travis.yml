@@ -8,8 +8,6 @@ before_install:
   - echo "artifactory_contextUrl=${AR_URL}" >> $HOME/.gradle/gradle.properties
   - echo "artifactory_user=${AR_USER}" >> $HOME/.gradle/gradle.properties
   - echo "artifactory_password=${AR_PASSWORD}" >> $HOME/.gradle/gradle.properties
-  - echo "systemProp.sonar.host.url=${SONAR_HOST}" >> $HOME/.gradle/gradle.properties
-  - echo "systemProp.sonar.login=${SONAR_LOGIN}" >> $HOME/.gradle/gradle.properties
 
 deploy:
   provider: releases
@@ -22,7 +20,6 @@ deploy:
 
 after_deploy:
   - ./gradlew build
-  - ./gradlew sonarqube
   - ./gradlew artifactoryPublish
 
 notifications:

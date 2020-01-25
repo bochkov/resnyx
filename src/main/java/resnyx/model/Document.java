@@ -15,6 +15,9 @@ public final class Document {
     @JsonProperty("file_id")
     private String id;
 
+    @JsonProperty("file_unique_id")
+    private String uid;
+
     /**
      * Optional. Document thumbnail as defined by sender
      */

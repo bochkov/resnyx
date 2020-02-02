@@ -93,6 +93,13 @@ public final class Chat {
     private ChatPermissions permissions;
 
     /**
+     * Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each unpriviledged user.
+     * Returned only in <a href="https://core.telegram.org/bots/api#getchat">getChat</a>.
+     */
+    @JsonProperty("slow_mode_delay")
+    private Integer slowModeDelay;
+
+    /**
      * Optional. For supergroups, name of group sticker set.
      * Returned only in <a href="https://core.telegram.org/bots/api#getchat">getChat</a>.
      */

@@ -15,8 +15,11 @@ public final class Document {
     @JsonProperty("file_id")
     private String id;
 
+    /**
+     * Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
+     */
     @JsonProperty("file_unique_id")
-    private String uid;
+    private String uniqueId;
 
     /**
      * Optional. Document thumbnail as defined by sender

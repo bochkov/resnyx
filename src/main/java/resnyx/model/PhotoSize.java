@@ -18,6 +18,12 @@ public final class PhotoSize {
     private String id;
 
     /**
+     * Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
+     */
+    @JsonProperty("file_unique_id")
+    private String uniqueId;
+
+    /**
      * Photo width
      */
     private Integer width;

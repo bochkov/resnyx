@@ -22,6 +22,12 @@ public final class ChatMember {
     private String status;
 
     /**
+     * Optional. Owner and administrators only. Custom title for this user
+     */
+    @JsonProperty("custom_title")
+    private String customTitle;
+
+    /**
      * Optional. Restricted and kicked only. Date when restrictions will be lifted for this user, unix time
      */
     @JsonProperty("until_date")

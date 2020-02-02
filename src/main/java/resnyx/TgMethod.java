@@ -71,6 +71,7 @@ import java.util.Map;
         @JsonSubTypes.Type(value = DeleteChatPhoto.class, name = DeleteChatPhoto.METHOD),
         @JsonSubTypes.Type(value = SetChatPhoto.class, name = SetChatPhoto.METHOD),
         @JsonSubTypes.Type(value = SetChatTitle.class, name = SetChatTitle.METHOD),
+        @JsonSubTypes.Type(value = SetChatAdminCustomTitle.class, name = SetChatAdminCustomTitle.METHOD),
         @JsonSubTypes.Type(value = SetChatDescription.class, name = SetChatDescription.METHOD),
         @JsonSubTypes.Type(value = SetChatPermissions.class, name = SetChatPermissions.METHOD),
         @JsonSubTypes.Type(value = PinChatMessage.class, name = PinChatMessage.METHOD),

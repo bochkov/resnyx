@@ -22,6 +22,12 @@ public final class StickerSet {
     private String title;
 
     /**
+     * True, if the sticker set contains animated stickers
+     */
+    @JsonProperty("is_animated")
+    private Boolean isAnimated;
+
+    /**
      * True, if the sticker set contains masks
      */
     @JsonProperty("contains_masks")

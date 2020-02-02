@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import resnyx.Answer;
 import resnyx.ReplyMethod;
 import resnyx.Types;
 import resnyx.model.Message;
@@ -50,7 +51,7 @@ public final class SendPhoto extends ReplyMethod<Message> {
     }
 
     @Override
-    protected TypeReference type() {
+    protected TypeReference<Answer<Message>> type() {
         return Types.MESSAGE;
     }
 }

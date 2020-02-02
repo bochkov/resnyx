@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import resnyx.Answer;
 import resnyx.TgMethod;
 import resnyx.Types;
 import resnyx.model.File;
@@ -45,7 +46,7 @@ public final class GetFile extends TgMethod<File> {
     }
 
     @Override
-    protected TypeReference type() {
+    protected TypeReference<Answer<File>> type() {
         return Types.FILE;
     }
 }

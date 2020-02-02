@@ -26,6 +26,12 @@ public final class Sticker {
     private Integer height;
 
     /**
+     * True, if the sticker is animated
+     */
+    @JsonProperty("is_animated")
+    private Boolean isAnimated;
+
+    /**
      * Optional. Sticker thumbnail in the .webp or .jpg format
      */
     private PhotoSize thumb;

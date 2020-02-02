@@ -34,7 +34,7 @@ public final class ChatMember {
     private Boolean canBeEdited;
 
     /**
-     * Optional. Administrators only. True, if the administrator can change the chat title, photo and other settings
+     * Optional. Administrators and restricted only. True, if the user is allowed to change the chat title, photo and other settings
      */
     @JsonProperty("can_change_info")
     private Boolean canChangeInfo;
@@ -59,7 +59,7 @@ public final class ChatMember {
     private Boolean canDeleteMessages;
 
     /**
-     * Optional. Administrators only. True, if the administrator can invite new users to the chat
+     * Optional. Administrators and restricted only. True, if the user is allowed to invite new users to the chat
      */
     @JsonProperty("can_invite_users")
     private Boolean canInviteUsers;
@@ -71,7 +71,7 @@ public final class ChatMember {
     private Boolean canRestrictMembers;
 
     /**
-     * Optional. Administrators only. True, if the administrator can pin messages, groups and supergroups only
+     * Optional. Administrators and restricted only. True, if the user is allowed to pin messages; groups and supergroups only
      */
     @JsonProperty("can_pin_messages")
     private Boolean canPinMessages;
@@ -102,6 +102,12 @@ public final class ChatMember {
      */
     @JsonProperty("can_send_media_messages")
     private Boolean canSendMedia;
+
+    /**
+     * Optional. Restricted only. True, if the user is allowed to send polls
+     */
+    @JsonProperty("can_send_polls")
+    private Boolean canSendPolls;
 
     /**
      * Optional. Restricted only. True, if the user can send animations, games,

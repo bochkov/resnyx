@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import resnyx.Answer;
 import resnyx.TgMethod;
 import resnyx.Types;
 import resnyx.model.ChatMember;
@@ -43,7 +44,7 @@ public final class GetChatAdmins extends TgMethod<List<ChatMember>> {
     }
 
     @Override
-    protected TypeReference type() {
+    protected TypeReference<Answer<List<ChatMember>>> type() {
         return Types.CHAT_MEMBERS;
     }
 }

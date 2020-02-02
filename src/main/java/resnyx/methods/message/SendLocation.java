@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import resnyx.Answer;
 import resnyx.ReplyMethod;
 import resnyx.Types;
 import resnyx.model.Message;
@@ -37,7 +38,7 @@ public final class SendLocation extends ReplyMethod<Message> {
     private Float longitude;
 
     /**
-     * Period in seconds for which the location will be updated (see {@link LiveLocations},
+     * Period in seconds for which the location will be updated (see <a href="https://telegram.org/blog/live-locations">Live Locations</a>},
      * should be between 60 and 86400.
      */
     private Integer livePeriod;
@@ -55,7 +56,7 @@ public final class SendLocation extends ReplyMethod<Message> {
     }
 
     @Override
-    protected TypeReference type() {
+    protected TypeReference<Answer<Message>> type() {
         return Types.MESSAGE;
     }
 }

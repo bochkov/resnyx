@@ -11,6 +11,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
+import resnyx.Answer;
 import resnyx.ReplyMethod;
 import resnyx.Types;
 import resnyx.model.InputFile;
@@ -80,7 +81,7 @@ public final class SendDocument extends ReplyMethod<Message> {
     }
 
     @Override
-    protected TypeReference type() {
+    protected TypeReference<Answer<Message>> type() {
         return Types.MESSAGE;
     }
 

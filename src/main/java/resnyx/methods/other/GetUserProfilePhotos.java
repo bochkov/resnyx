@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import resnyx.Answer;
 import resnyx.TgMethod;
 import resnyx.Types;
 import resnyx.model.UserProfilePhotos;
@@ -49,7 +50,7 @@ public final class GetUserProfilePhotos extends TgMethod<UserProfilePhotos> {
     }
 
     @Override
-    protected TypeReference type() {
+    protected TypeReference<Answer<UserProfilePhotos>> type() {
         return Types.USER_PHOTOS;
     }
 }

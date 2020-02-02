@@ -72,6 +72,7 @@ import java.util.Map;
         @JsonSubTypes.Type(value = SetChatPhoto.class, name = SetChatPhoto.METHOD),
         @JsonSubTypes.Type(value = SetChatTitle.class, name = SetChatTitle.METHOD),
         @JsonSubTypes.Type(value = SetChatDescription.class, name = SetChatDescription.METHOD),
+        @JsonSubTypes.Type(value = SetChatPermissions.class, name = SetChatPermissions.METHOD),
         @JsonSubTypes.Type(value = PinChatMessage.class, name = PinChatMessage.METHOD),
         @JsonSubTypes.Type(value = UnpinChatMessage.class, name = UnpinChatMessage.METHOD),
         @JsonSubTypes.Type(value = LeaveChat.class, name = LeaveChat.METHOD),
@@ -112,7 +113,7 @@ public abstract class TgMethod<T> implements Serializable {
 
     protected abstract String method();
 
-    protected abstract TypeReference type();
+    protected abstract TypeReference<Answer<T>> type();
 
     protected List<NameValuePair> params() {
         Map<String, String> params = MAPPER.convertValue(this, MAP_TYPE);

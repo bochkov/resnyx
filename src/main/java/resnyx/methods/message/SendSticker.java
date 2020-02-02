@@ -5,13 +5,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import resnyx.Answer;
 import resnyx.ReplyMethod;
 import resnyx.Types;
 import resnyx.model.InputFile;
 import resnyx.model.Message;
 
 /**
- * Use this method to send .webp stickers. On success, the sent Message is returned.
+ * Use this method to send .WEBP stickers or aimated .TGS stickers. On success, the sent Message is returned.
  */
 @Data
 @NoArgsConstructor
@@ -47,7 +48,7 @@ public final class SendSticker extends ReplyMethod<Message> {
     }
 
     @Override
-    protected TypeReference type() {
+    protected TypeReference<Answer<Message>> type() {
         return Types.MESSAGE;
     }
 }

@@ -51,7 +51,10 @@ public final class Chat {
 
     /**
      * Optional. True if a group has ‘All Members Are Admins’ enabled.
+     * @deprecated
+     * @since 4.4
      */
+    @Deprecated(since = "4.4")
     @JsonProperty("all_members_are_administrators")
     private Boolean allAdmin;
 
@@ -81,6 +84,13 @@ public final class Chat {
      */
     @JsonProperty("pinned_message")
     private Message pinnedMsg;
+
+    /**
+     * Optional. Default chat member permissions, for groups and supergroups.
+     * Returned only in <a href="https://core.telegram.org/bots/api#getchat">getChat</a>.
+     */
+    @JsonProperty
+    private ChatPermissions permissions;
 
     /**
      * Optional. For supergroups, name of group sticker set.

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import resnyx.Answer;
 import resnyx.ReplyMethod;
 import resnyx.Types;
 import resnyx.model.InputMedia;
@@ -50,7 +51,7 @@ public final class SendMediaGroup extends ReplyMethod<List<Message>> {
     }
 
     @Override
-    protected TypeReference type() {
+    protected TypeReference<Answer<List<Message>>> type() {
         return Types.ARR_OF_MESSAGES;
     }
 }

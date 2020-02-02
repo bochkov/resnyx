@@ -5,13 +5,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import resnyx.Answer;
 import resnyx.TgMethod;
 import resnyx.Types;
+import resnyx.model.ChatPermissions;
 
 /**
  * Use this method to restrict a user in a supergroup.
  * The bot must be an administrator in the supergroup for this to work and must have
- * the appropriate admin rights. Pass True for all boolean parameters to lift
+ * the appropriate admin rights. Pass True for all permissions to lift
  * restrictions from a user. Returns True on success.
  */
 @Data
@@ -35,6 +37,11 @@ public final class RestrictChatMember extends TgMethod<Boolean> {
     private Long userId;
 
     /**
+     * New user permissions
+     */
+    private ChatPermissions permissions;
+
+    /**
      * Optional. Date when restrictions will be lifted for the user, unix time.
      * If user is restricted for more than 366 days or less than 30 seconds
      * from the current time, they are considered to be restricted forever
@@ -42,37 +49,11 @@ public final class RestrictChatMember extends TgMethod<Boolean> {
     @JsonProperty("until_date")
     private Integer until;
 
-    /**
-     * Optional. Pass True, if the user can send text messages, contacts, locations and venues
-     */
-    @JsonProperty("can_send_messages")
-    private Boolean sendMessages;
-
-    /**
-     * Optional. Pass True, if the user can send audios, documents, photos,
-     * videos, video notes and voice notes, implies can_send_messages
-     */
-    @JsonProperty("can_send_media_messages")
-    private Boolean sendMedia;
-
-    /**
-     * Optional. Pass True, if the user can send animations,
-     * games, stickers and use inline bots, implies can_send_media_messages
-     */
-    @JsonProperty("can_send_other_messages")
-    private Boolean sendOther;
-
-    /**
-     * Optional. Pass True, if the user may add web page previews to their messages,
-     * implies can_send_media_messages
-     */
-    @JsonProperty("can_add_web_page_previews")
-    private Boolean addWebPreview;
-
-    public RestrictChatMember(String token, Long chatId, Long userId) {
+    public RestrictChatMember(String token, Long chatId, Long userId, ChatPermissions permissions) {
         super(token);
         this.chatId = chatId;
         this.userId = userId;
+        this.permissions = permissions;
     }
 
     @Override
@@ -81,7 +62,7 @@ public final class RestrictChatMember extends TgMethod<Boolean> {
     }
 
     @Override
-    protected TypeReference type() {
+    protected TypeReference<Answer<Boolean>> type() {
         return Types.BOOL;
     }
 }

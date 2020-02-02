@@ -42,4 +42,22 @@ public final class User {
      */
     @JsonProperty("language_code")
     private String languageCode;
+
+    /**
+     * Optional. True, if the bot can be invited to groups. Returned only in getMe.
+     */
+    @JsonProperty("can_join_groups")
+    private Boolean canJoinGroups;
+
+    /**
+     * Optional. True, if privacy mode is disabled for the bot. Returned only in getMe.
+     */
+    @JsonProperty("can_read_all_group_messages")
+    private Boolean canReadAll;
+
+    /**
+     * Optional. True, if the bot supports inline queries. Returned only in getMe.
+     */
+    @JsonProperty("supports_inline_queries")
+    private Boolean supportInline;
 }

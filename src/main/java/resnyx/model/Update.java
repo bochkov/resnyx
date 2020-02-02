@@ -81,4 +81,11 @@ public final class Update {
      * Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot
      */
     private Poll poll;
+
+    /**
+     * Optional. A user changed their answer in a non-anonymous poll.
+     * Bots receive new votes only in polls that were sent by the bot itself.
+     */
+    @JsonProperty("poll_answer")
+    private PollAnswer pollAnswer;
 }

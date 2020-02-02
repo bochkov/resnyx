@@ -15,7 +15,7 @@ import resnyx.Types;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class SetChatAdminCustomTitle extends TgMethod<Boolean> {
+public final class SetChatAdminCustomTitle extends TgMethod<Boolean> {
 
     public static final String METHOD = "setChatAdministratorCustomTitle";
 

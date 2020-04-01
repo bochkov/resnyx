@@ -1,19 +1,16 @@
-plugins {
-    id 'java'
-    id 'com.jfrog.artifactory' version '4.13.0'
-}
-
-repositories {
-    jcenter()
-}
-
 group = 'resnyx'
 version = '4.6'
 
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'com.jfrog.artifactory'
-apply plugin: 'maven-publish'
+apply plugin: 'maven'
+
+repositories {
+    jcenter()
+    maven {
+        url "${nexusUrl}/repository/maven-public/"
+    }
+}
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -25,7 +22,7 @@ dependencies {
     implementation 'org.slf4j:slf4j-api:1.7.26'
     implementation 'ch.qos.logback:logback-core:1.2.3'
 
-    implementation 'org.cactoos:cactoos:0.43'
+    implementation 'org.cactoos:cactoos:0.44'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.10.2'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.2'
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.10.2'
@@ -40,25 +37,15 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-artifactory {
-    contextUrl = "${artifactory_contextUrl}"
-    publish {
-        defaults {
-            publications('mavenJava')
-        }
-        repository {
-            repoKey = 'libs-release-local'
-            username = "${artifactory_user}"
-            password = "${artifactory_password}"
-            maven = true
-        }
-    }
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "${nexusUrl}/repository/maven-releases") {
+                authentication(userName: nexusUsername, password: nexusPassword)
+            }
+            snapshotRepository(url: "${nexusUrl}/repository/maven-snapshots") {
+                authentication(userName: nexusUsername, password: nexusPassword)
+            }
         }
     }
 }

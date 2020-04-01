@@ -19,8 +19,7 @@ deploy:
     tags: true
 
 after_deploy:
-  - ./gradlew build
-  - ./gradlew artifactoryPublish
+  - ./gradlew build upload
 
 notifications:
   email: false

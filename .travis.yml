@@ -5,9 +5,9 @@ jdk:
 
 before_install:
   - ./gradlew --version
-  - echo "artifactory_contextUrl=${AR_URL}" >> $HOME/.gradle/gradle.properties
-  - echo "artifactory_user=${AR_USER}" >> $HOME/.gradle/gradle.properties
-  - echo "artifactory_password=${AR_PASSWORD}" >> $HOME/.gradle/gradle.properties
+  - echo "nexusUrl=${AR_URL}" >> $HOME/.gradle/gradle.properties
+  - echo "nexusUsername=${AR_USER}" >> $HOME/.gradle/gradle.properties
+  - echo "nexusPassword=${AR_PASSWORD}" >> $HOME/.gradle/gradle.properties
 
 deploy:
   provider: releases

@@ -2,11 +2,8 @@ package resnyx.methods.message;
 
 import java.io.IOException;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.Assert;
 import org.junit.Test;
-import resnyx.Answer;
-import resnyx.model.Message;
 
 public class SendMessageTest {
 

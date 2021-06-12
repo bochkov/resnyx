@@ -1,5 +1,7 @@
 package resnyx.methods.message;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Data;
@@ -10,8 +12,6 @@ import resnyx.ReplyMethod;
 import resnyx.Types;
 import resnyx.model.Message;
 import resnyx.model.Poll;
-
-import java.util.List;
 
 /**
  * Use this method to send a native poll.

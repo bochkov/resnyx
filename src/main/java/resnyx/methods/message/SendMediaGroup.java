@@ -1,5 +1,7 @@
 package resnyx.methods.message;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Data;
@@ -12,8 +14,6 @@ import resnyx.model.InputMedia;
 import resnyx.model.InputMediaPhoto;
 import resnyx.model.InputMediaVideo;
 import resnyx.model.Message;
-
-import java.util.List;
 
 /**
  * Use this method to send a group of photos or videos as an album.

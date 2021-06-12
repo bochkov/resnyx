@@ -1,9 +1,9 @@
 package resnyx;
 
+import java.util.List;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import resnyx.model.*;
-
-import java.util.List;
 
 public final class Types {
 

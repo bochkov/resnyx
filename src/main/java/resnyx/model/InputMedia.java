@@ -1,8 +1,8 @@
 package resnyx.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * This object represents the content of a media message to be sent. It should be one of

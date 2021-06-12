@@ -19,7 +19,7 @@ deploy:
     tags: true
 
 after_deploy:
-  - ./gradlew build upload
+  - ./gradlew build publish
 
 notifications:
   email: false

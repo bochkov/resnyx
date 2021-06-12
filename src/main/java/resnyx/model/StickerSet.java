@@ -1,9 +1,9 @@
 package resnyx.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-
-import java.util.List;
 
 /**
  * This object represents a sticker set.

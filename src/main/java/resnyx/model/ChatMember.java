@@ -1,9 +1,9 @@
 package resnyx.model;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-
-import java.util.Date;
 
 /**
  * This object contains information about one member of a chat.

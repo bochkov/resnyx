@@ -1,13 +1,22 @@
 package resnyx;
 
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.Charsets;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
@@ -16,8 +25,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import resnyx.methods.chat.*;
 import resnyx.methods.edit.*;
 import resnyx.methods.message.*;
@@ -27,20 +34,14 @@ import resnyx.methods.other.GetMe;
 import resnyx.methods.other.GetUserProfilePhotos;
 import resnyx.methods.stickers.*;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 /**
  * abstract class for all telegram api methods
- *
  * @param <T>
  */
+@Slf4j
 @Data
 @NoArgsConstructor
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "method")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "method")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = GetMe.class, name = GetMe.METHOD),
         @JsonSubTypes.Type(value = SendMessage.class, name = SendMessage.METHOD),
@@ -99,16 +100,16 @@ import java.util.Map;
 })
 public abstract class TgMethod<T> implements Serializable {
 
-    private static final Logger LOG = LoggerFactory.getLogger(TgMethod.class);
     private static final ObjectMapper MAPPER = new ObjectMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
             .setSerializationInclusion(JsonInclude.Include.NON_NULL);
     private static final TypeReference<Map<String, String>> MAP_TYPE = new TypeReference<>() {
     };
 
+    @JsonIgnore
     private String token;
 
-    public TgMethod(String token) {
+    protected TgMethod(String token) {
         this.token = token;
     }
 
@@ -133,9 +134,7 @@ public abstract class TgMethod<T> implements Serializable {
     public Answer<T> execute() throws IOException {
         String json;
         try (CloseableHttpClient http = HttpClients.createDefault()) {
-            HttpPost post = new HttpPost(
-                    String.format("https://api.telegram.org/bot%s/%s", token, method())
-            );
+            var post = new HttpPost(String.format("https://api.telegram.org/bot%s/%s", token, method()));
             post.setEntity(this.toHttpEntity());
             json = new String(
                     http.execute(post).getEntity().getContent().readAllBytes()
@@ -143,10 +142,19 @@ public abstract class TgMethod<T> implements Serializable {
         }
         LOG.debug("{}", json);
         Answer<T> answer = MAPPER.readValue(json, type());
-        if (!answer.getOk()) {
+        if (Boolean.FALSE.equals(answer.getOk())) {
             String msg = answer.errDesc();
             LOG.warn(msg);
         }
         return answer;
+    }
+
+    public String toJson() throws JsonProcessingException {
+        return MAPPER.writeValueAsString(this);
+
+    }
+
+    public static <Z> Z fromJson(String str, Class<Z> clz) throws JsonProcessingException {
+        return MAPPER.readValue(str, clz);
     }
 }

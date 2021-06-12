@@ -1,5 +1,7 @@
 package resnyx.methods.chat;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Data;
@@ -9,8 +11,6 @@ import resnyx.Answer;
 import resnyx.TgMethod;
 import resnyx.Types;
 import resnyx.model.ChatMember;
-
-import java.util.List;
 
 /**
  * Use this method to get a list of administrators in a chat.

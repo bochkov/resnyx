@@ -61,8 +61,7 @@ public final class EditMessageLiveLoc extends TgMethod<Message> {
     @JsonProperty("reply_markup")
     private InlineKeyboardMarkup replyMarkup;
 
-    public EditMessageLiveLoc(String token, Long chatId, Long messageId,
-                              Float latitude, Float longitude) {
+    public EditMessageLiveLoc(String token, Long chatId, Long messageId, Float latitude, Float longitude) {
         super(token);
         this.chatId = chatId;
         this.messageId = messageId;

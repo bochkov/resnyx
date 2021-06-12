@@ -1,5 +1,6 @@
 package resnyx.methods.message;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Data;
@@ -32,18 +33,13 @@ public final class SendMessage extends ReplyMethod<Message> {
      */
     private String text;
 
-    /**
-     * Optional. Disables link previews for links in this message
-     */
-    @JsonProperty("disable_web_page_preview")
-    private Boolean disablePreview;
-
     public SendMessage(String token, Long chatId, String text) {
         super(token);
         this.chatId = chatId;
         this.text = text;
     }
 
+    @JsonIgnore
     @Override
     protected String method() {
         return METHOD;

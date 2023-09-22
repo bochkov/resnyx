@@ -1,0 +1,70 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'maven-publish'
+    id 'com.github.ben-manes.versions' version '0.48.0'
+}
+
+group = 'resnyx'
+version = '6.8.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    withSourcesJar()
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name "reposiliteRepositoryReleases"
+        url "https://maven.sergeybochkov.com/releases"
+    }
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation platform('com.fasterxml.jackson:jackson-bom:2.15.2')
+    implementation 'com.fasterxml.jackson.core:jackson-annotations'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+    testImplementation 'org.mockito:mockito-core:5.5.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.5.0'
+    testImplementation 'ch.qos.logback:logback-classic:1.4.11'
+    testImplementation platform('com.konghq:unirest-java-bom:4.0.8')
+    testImplementation 'com.konghq:unirest-java-core'
+    testImplementation 'com.konghq:unirest-objectmapper-jackson'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+publishing {
+    repositories {
+        maven {
+            url = "https://maven.sergeybochkov.com/releases"
+            credentials {
+                username = "$reposilite_user"
+                password = "$reposilite_password"
+            }
+        }
+    }
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}

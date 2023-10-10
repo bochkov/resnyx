@@ -81,6 +81,24 @@ public final class ChatAdministratorRights {
     private Boolean canPinMessages;
 
     /**
+     * Optional. True, if the administrator can post stories in the channel; channels only
+     */
+    @JsonProperty("can_post_stories")
+    private Boolean canPostStories;
+
+    /**
+     * Optional. True, if the administrator can edit stories posted by other users; channels only
+     */
+    @JsonProperty("can_edit_stories")
+    private Boolean canEditStories;
+
+    /**
+     * Optional. True, if the administrator can delete stories posted by other users; channels only
+     */
+    @JsonProperty("can_delete_stories")
+    private Boolean canDeleteStories;
+
+    /**
      * Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
      */
     @JsonProperty("can_manage_topics")

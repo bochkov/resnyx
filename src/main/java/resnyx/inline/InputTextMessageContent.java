@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.common.ParseMode;
+import resnyx.messenger.general.LinkPreviewOptions;
 import resnyx.messenger.general.MessageEntity;
 
 /**
@@ -33,8 +34,8 @@ public final class InputTextMessageContent implements InputMessageContent {
     private List<MessageEntity> entities;
 
     /**
-     * Optional. Disables link previews for links in the sent message
+     * Optional. Link preview generation options for the message
      */
-    @JsonProperty("disable_web_page_preview")
-    private Boolean disableWebPagePreview;
+    @JsonProperty("link_preview_options")
+    private LinkPreviewOptions linkPreviewOptions;
 }

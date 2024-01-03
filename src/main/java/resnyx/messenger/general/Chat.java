@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import resnyx.messenger.chat.ChatLocation;
 import resnyx.messenger.chat.ChatPermissions;
 import resnyx.messenger.chat.ChatPhoto;
+import resnyx.messenger.chat.ReactionType;
 import resnyx.util.UnixTimeDeserializer;
 
 /**
@@ -70,6 +71,42 @@ public final class Chat {
      */
     @JsonProperty("active_usernames")
     private List<String> activeUsernames;
+
+    /**
+     * Optional. List of available reactions allowed in the chat.
+     * If omitted, then all emoji reactions are allowed.
+     * Returned only in getChat.
+     */
+    @JsonProperty("available_reactions")
+    private List<ReactionType> availableReactions;
+
+    /**
+     * Optional. Identifier of the accent color for the chat name and backgrounds of the chat photo, reply header,
+     * and link preview. See accent colors for more details. Returned only in getChat. Always returned in getChat.
+     */
+    @JsonProperty("accent_color_id")
+    private Integer accentColorId;
+
+    /**
+     * Optional. Custom emoji identifier of emoji chosen by the chat for the reply header and link preview background.
+     * Returned only in getChat.
+     */
+    @JsonProperty("background_custom_emoji_id")
+    private String backgroundCustomEmojiId;
+
+    /**
+     * Optional. Identifier of the accent color for the chat's profile background.
+     * See profile accent colors for more details. Returned only in getChat.
+     */
+    @JsonProperty("profile_accent_color_id")
+    private Integer profileAccentColorId;
+
+    /**
+     * Optional. Custom emoji identifier of the emoji chosen by the chat for its profile background.
+     * Returned only in getChat.
+     */
+    @JsonProperty("profile_background_custom_emoji_id")
+    private String profileBackgroundCustomEmojiId;
 
     /**
      * Optional. Custom emoji identifier of emoji status of the other party in a private chat. Returned only in getChat.
@@ -168,6 +205,12 @@ public final class Chat {
      */
     @JsonProperty("has_protected_content")
     private Boolean hasProtectedContent;
+
+    /**
+     * Optional. True, if new chat members will have access to old messages; available only to chat administrators. Returned only in getChat.
+     */
+    @JsonProperty("has_visible_history")
+    private Boolean hasVisibleHistory;
 
     /**
      * Optional. For supergroups, name of group sticker set. Returned only in getChat.

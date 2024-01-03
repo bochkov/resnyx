@@ -3,7 +3,7 @@ package resnyx.messenger.keyboard;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import resnyx.messenger.general.Message;
+import resnyx.messenger.general.MaybeInaccessibleMessage;
 import resnyx.messenger.general.User;
 
 /**
@@ -27,10 +27,9 @@ public final class CallbackQuery {
     private User from;
 
     /**
-     * Optional. Message with the callback button that originated the query.
-     * Note that message content and message date will not be available if the message is too old
+     * Optional. Message sent by the bot with the callback button that originated the query
      */
-    private Message message;
+    private MaybeInaccessibleMessage message;
 
     /**
      * Optional. Identifier of the message sent via the bot in inline mode, that originated the query.

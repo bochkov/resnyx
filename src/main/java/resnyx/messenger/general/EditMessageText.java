@@ -48,10 +48,10 @@ public final class EditMessageText implements TgMethod {
     private List<MessageEntity> entities;
 
     /**
-     * Disables link previews for links in this message
+     * Link preview generation options for the message
      */
-    @JsonProperty("disable_web_page_preview")
-    private Boolean disableWebPagePreview;
+    @JsonProperty("link_preview_options")
+    private LinkPreviewOptions linkPreviewOptions;
 
     /**
      * A JSON-serialized object for an inline keyboard

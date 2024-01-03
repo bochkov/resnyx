@@ -5,11 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.inline.ChosenInlineResult;
 import resnyx.inline.InlineQuery;
+import resnyx.messenger.chat.ChatBoostRemoved;
+import resnyx.messenger.chat.ChatBoostUpdated;
 import resnyx.messenger.chat.ChatJoinRequest;
 import resnyx.messenger.chat.ChatMemberUpdated;
-import resnyx.messenger.general.Message;
-import resnyx.messenger.general.Poll;
-import resnyx.messenger.general.PollAnswer;
+import resnyx.messenger.general.*;
 import resnyx.messenger.keyboard.CallbackQuery;
 import resnyx.payments.PreCheckoutQuery;
 import resnyx.payments.ShippingQuery;
@@ -53,6 +53,23 @@ public final class Update {
      */
     @JsonProperty("edited_channel_post")
     private Message editedChannelPost;
+
+    /**
+     * Optional. A reaction to a message was changed by a user.
+     * The bot must be an administrator in the chat and must explicitly specify "message_reaction"
+     * in the list of allowed_updates to receive these updates.
+     * The update isn't received for reactions set by bots.
+     */
+    @JsonProperty("message_reaction")
+    private MessageReactionUpdated messageReaction;
+
+    /**
+     * Optional. Reactions to a message with anonymous reactions were changed.
+     * The bot must be an administrator in the chat and must explicitly specify "message_reaction_count"
+     * in the list of allowed_updates to receive these updates.
+     */
+    @JsonProperty("message_reaction_count")
+    private MessageReactionCountUpdated messageReactionCount;
 
     /**
      * Optional. New incoming inline query
@@ -117,5 +134,17 @@ public final class Update {
      */
     @JsonProperty("chat_join_request")
     private ChatJoinRequest chatJoinRequest;
+
+    /**
+     * Optional. A chat boost was added or changed. The bot must be an administrator in the chat to receive these updates.
+     */
+    @JsonProperty("chat_boost")
+    private ChatBoostUpdated chatBoost;
+
+    /**
+     * Optional. A boost was removed from a chat. The bot must be an administrator in the chat to receive these updates.
+     */
+    @JsonProperty("removed_chat_boost")
+    private ChatBoostRemoved removedChatBoost;
 
 }

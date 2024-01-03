@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-public final class KeyboardButtonRequestUser {
+public final class KeyboardButtonRequestUsers {
 
     /**
      * Signed 32-bit identifier of the request, which will be received back in the UserShared object.
@@ -32,4 +32,10 @@ public final class KeyboardButtonRequestUser {
      */
     @JsonProperty("user_is_premium")
     private Boolean userIsPremium;
+
+    /**
+     * Optional. The maximum number of users to be selected; 1-10. Defaults to 1.
+     */
+    @JsonProperty("max_quantity")
+    private Integer maxQuantity;
 }

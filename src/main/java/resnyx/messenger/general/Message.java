@@ -1,14 +1,9 @@
 package resnyx.messenger.general;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import resnyx.common.ForwardOpts;
 import resnyx.games.Game;
 import resnyx.messenger.keyboard.InlineKeyboardMarkup;
 import resnyx.messenger.topic.*;
@@ -22,12 +17,15 @@ import resnyx.payments.SuccessfulPayment;
 import resnyx.stickers.Sticker;
 import resnyx.util.UnixTimeDeserializer;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 /**
  * This object represents a message.
  */
 @Data
 @NoArgsConstructor
-public final class Message {
+public final class Message implements MaybeInaccessibleMessage {
 
     /**
      * Unique message identifier inside this chat
@@ -67,8 +65,11 @@ public final class Message {
      */
     private Chat chat;
 
-    @JsonUnwrapped
-    private ForwardOpts forwardOpts;
+    /**
+     * Optional. Information about the original message for forwarded messages
+     */
+    @JsonProperty("forward_origin")
+    private MessageOrigin forwardOrigin;
 
     /**
      * Optional. True, if the message is sent to a forum topic
@@ -88,6 +89,17 @@ public final class Message {
      */
     @JsonProperty("reply_to_message")
     private Message replyToMessage;
+
+    /**
+     * Optional. Information about the message that is being replied to, which may come from another chat or forum topic
+     */
+    @JsonProperty("external_reply")
+    private ExternalReplyInfo externalReply;
+
+    /**
+     * Optional. For replies that quote part of the original message, the quoted part of the message
+     */
+    private TextQuote quote;
 
     /**
      * Optional. Bot through which the message was sent
@@ -129,6 +141,12 @@ public final class Message {
      * Optional. For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text
      */
     private List<MessageEntity> entities;
+
+    /**
+     * Optional. Options used for link preview generation for the message, if it is a text message and link preview options were changed
+     */
+    @JsonProperty("link_preview_options")
+    private LinkPreviewOptions linkPreviewOptions;
 
     /**
      * Optional. Message is an animation, information about the animation.
@@ -301,10 +319,10 @@ public final class Message {
 
     /**
      * Optional. Specified message was pinned.
-     * Note that the Message object in this field will not contain further reply_to_message fields even if it is itself a reply.
+     * Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
      */
     @JsonProperty("pinned_message")
-    private Message pinnedMessage;
+    private MaybeInaccessibleMessage pinnedMessage;
 
     /**
      * Optional. Message is an invoice for a payment, information about the invoice.
@@ -320,8 +338,8 @@ public final class Message {
     /**
      * Optional. Service message: a user was shared with the bot
      */
-    @JsonProperty("user_shared")
-    private UserShared userShared;
+    @JsonProperty("users_shared")
+    private UsersShared userShared;
 
     /**
      * Optional. Service message: a chat was shared with the bot
@@ -388,6 +406,29 @@ public final class Message {
      */
     @JsonProperty("general_forum_topic_unhidden")
     private GeneralForumTopicUnhidden generalForumTopicUnhidden;
+
+    /**
+     * Optional. Service message: a scheduled giveaway was created
+     */
+    @JsonProperty("giveaway_created")
+    private GiveawayCreated giveawayCreated;
+
+    /**
+     * Optional. The message is a scheduled giveaway message
+     */
+    private Giveaway giveaway;
+
+    /**
+     * Optional. A giveaway with public winners was completed
+     */
+    @JsonProperty("giveaway_winners")
+    private GiveawayWinners giveawayWinners;
+
+    /**
+     * Optional. Service message: a giveaway without public winners was completed
+     */
+    @JsonProperty("giveaway_completed")
+    private GiveawayCompleted giveawayCompleted;
 
     /**
      * Optional. Service message: video chat scheduled

@@ -2,6 +2,7 @@ package resnyx.common;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import resnyx.messenger.general.ReplyParameters;
 import resnyx.messenger.keyboard.ReplyMarkup;
 
 @Data
@@ -26,16 +27,10 @@ public class SendOptions {
     private Boolean protectContent;
 
     /**
-     * If the message is a reply, ID of the original message
+     * Description of the message to reply to
      */
-    @JsonProperty("reply_to_message_id")
-    private Long replyToMessageId;
-
-    /**
-     * Pass True if the message should be sent even if the specified replied-to message is not found
-     */
-    @JsonProperty("allow_sending_without_reply")
-    private Boolean allowSendingWithoutReply;
+    @JsonProperty("reply_parameters")
+    private ReplyParameters replyParameters;
 
     /**
      * A JSON-serialized object for an inline keyboard.

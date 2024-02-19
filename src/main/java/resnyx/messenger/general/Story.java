@@ -9,4 +9,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public final class Story {
+
+    /**
+     * Unique identifier for the story in the chat
+     */
+    private Integer id;
+
+    /**
+     * Chat that posted the story
+     */
+    private Chat chat;
 }

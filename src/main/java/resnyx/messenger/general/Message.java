@@ -55,6 +55,12 @@ public final class Message implements MaybeInaccessibleMessage {
     private Chat senderChat;
 
     /**
+     * Optional. If the sender of the message boosted the chat, the number of boosts added by the user
+     */
+    @JsonProperty("sender_boost_count")
+    private Integer senderBoostCount;
+
+    /**
      * Date the message was sent in Unix time
      */
     @JsonDeserialize(using = UnixTimeDeserializer.class)
@@ -100,6 +106,12 @@ public final class Message implements MaybeInaccessibleMessage {
      * Optional. For replies that quote part of the original message, the quoted part of the message
      */
     private TextQuote quote;
+
+    /**
+     * Optional. For replies to a story, the original story
+     */
+    @JsonProperty("reply_to_story")
+    private Story replyToStory;
 
     /**
      * Optional. Bot through which the message was sent
@@ -370,6 +382,12 @@ public final class Message implements MaybeInaccessibleMessage {
      */
     @JsonProperty("proximity_alert_triggered")
     private ProximityAlertTriggered proximityAlertTriggered;
+
+    /**
+     * Optional. Service message: user boosted the chat
+     */
+    @JsonProperty("boost_added")
+    private ChatBoostAdded boostAdded;
 
     /**
      * Optional. Service message: forum topic created

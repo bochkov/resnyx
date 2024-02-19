@@ -175,13 +175,22 @@ public final class Chat {
     private ChatPermissions permissions;
 
     /**
-     * Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each unpriviledged user; in seconds. Returned only in getChat.
+     * Optional. For supergroups, the minimum allowed delay between consecutive messages sent
+     * by each unpriviledged user; in seconds. Returned only in getChat.
      */
     @JsonProperty("slow_mode_delay")
     private Integer slowModeDelay;
 
     /**
-     * Optional. The time after which all messages sent to the chat will be automatically deleted; in seconds. Returned only in getChat.
+     * Optional. For supergroups, the minimum number of boosts that a non-administrator user needs to add
+     * in order to ignore slow mode and chat permissions. Returned only in getChat.
+     */
+    @JsonProperty("unrestrict_boost_count")
+    private Integer unrestrictBoostCount;
+
+    /**
+     * Optional. The time after which all messages sent to the chat will be automatically deleted; in seconds.
+     * Returned only in getChat.
      */
     @JsonProperty("message_auto_delete_time")
     private Integer messageAutoDeleteTime;
@@ -223,6 +232,14 @@ public final class Chat {
      */
     @JsonProperty("can_set_sticker_set")
     private Boolean canSetStickerName;
+
+    /**
+     * Optional. For supergroups, the name of the group's custom emoji sticker set.
+     * Custom emoji from this set can be used by all users and bots in the group.
+     * Returned only in getChat.
+     */
+    @JsonProperty("custom_emoji_sticker_set_name ")
+    private String customEmojiStickerSetName;
 
     /**
      * Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats.

@@ -7,7 +7,7 @@ February 16, 2024
 
 It's recommended to first read the [manual](https://core.telegram.org/bots/api).
 
-Compiled jar available in [this](https://maven.sergeybochkov.com/releases) repository.
+Compiled jar available in [this](https://maven.sergeybochkov.com/#/releases/resnyx/resnyx) repository.
 
 Gradle Groovy example:
 ```groovy

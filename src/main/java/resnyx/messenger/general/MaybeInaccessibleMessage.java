@@ -8,10 +8,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  * {@link Message}
  * {@link InaccessibleMessage}
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "date", visible = true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "date", visible = true, defaultImpl = Message.class)
 @JsonSubTypes({
         @JsonSubTypes.Type(name = "0", value = InaccessibleMessage.class),
-        @JsonSubTypes.Type(value = Message.class),
 })
 public interface MaybeInaccessibleMessage {
 }

@@ -1,11 +1,11 @@
 package resnyx.stickers;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.messenger.general.PhotoSize;
+
+import java.util.List;
 
 /**
  * This object represents a sticker set.
@@ -28,18 +28,6 @@ public final class StickerSet {
      * Type of stickers in the set, currently one of “regular”, “mask”, “custom_emoji”
      */
     private StickerType type;
-
-    /**
-     * True, if the sticker set contains animated stickers
-     */
-    @JsonProperty("is_animated")
-    private Boolean isAnimated;
-
-    /**
-     * True, if the sticker set contains video stickers
-     */
-    @JsonProperty("is_video")
-    private Boolean isVideo;
 
     /**
      * List of all set stickers

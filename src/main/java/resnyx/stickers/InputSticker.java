@@ -23,6 +23,14 @@ public final class InputSticker {
     private InputFile sticker;
 
     /**
+     * Format of the added sticker, must be one of
+     * “static” for a .WEBP or .PNG image,
+     * “animated” for a .TGS animation,
+     * “video” for a WEBM video
+     */
+    private StickerFormat format;
+
+    /**
      * List of 1-20 emoji associated with the sticker
      */
     @JsonProperty("emoji_list")

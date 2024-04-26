@@ -1,8 +1,5 @@
 package resnyx.messenger.general;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
@@ -12,6 +9,9 @@ import resnyx.messenger.chat.ChatPermissions;
 import resnyx.messenger.chat.ChatPhoto;
 import resnyx.messenger.chat.ReactionType;
 import resnyx.util.UnixTimeDeserializer;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * This object represents a chat.
@@ -71,6 +71,35 @@ public final class Chat {
      */
     @JsonProperty("active_usernames")
     private List<String> activeUsernames;
+
+    /**
+     * Optional. For private chats, the date of birth of the user. Returned only in getChat.
+     */
+    private Birthdate birthdate;
+
+    /**
+     * Optional. For private chats with business accounts, the intro of the business. Returned only in getChat.
+     */
+    @JsonProperty("business_intro")
+    private BusinessIntro businessIntro;
+
+    /**
+     * Optional. For private chats with business accounts, the location of the business. Returned only in getChat.
+     */
+    @JsonProperty("business_location")
+    private BusinessLocation businessLocation;
+
+    /**
+     * Optional. For private chats with business accounts, the opening hours of the business. Returned only in getChat.
+     */
+    @JsonProperty("business_opening_hours")
+    private BusinessOpeningHours businessOpeningHours;
+
+    /**
+     * Optional. For private chats, the personal channel of the user. Returned only in getChat.
+     */
+    @JsonProperty("personal_chat")
+    private Chat personalChat;
 
     /**
      * Optional. List of available reactions allowed in the chat.

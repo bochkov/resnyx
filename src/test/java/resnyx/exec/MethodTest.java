@@ -9,7 +9,7 @@ import java.util.Properties;
 import kong.unirest.core.ContentType;
 import kong.unirest.core.HttpRequestWithBody;
 import kong.unirest.core.Unirest;
-import kong.unirest.jackson.JacksonObjectMapper;
+import kong.unirest.modules.jackson.JacksonObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import resnyx.TgMethod;
 import resnyx.common.Caption;

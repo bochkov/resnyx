@@ -1,12 +1,12 @@
 package resnyx.stickers;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import resnyx.TgMethod;
+
+import java.util.List;
 
 /**
  * Use this method to create a new sticker set owned by a user.
@@ -40,12 +40,6 @@ public final class CreateNewStickerSet implements TgMethod {
      * A JSON-serialized list of 1-50 initial stickers to be added to the sticker set
      */
     private final List<InputSticker> stickers;
-
-    /**
-     * Format of stickers in the set, must be one of “static”, “animated”, “video”
-     */
-    @JsonProperty("sticker_format")
-    private final StickerFormat stickerFormat;
 
     /**
      * Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”.

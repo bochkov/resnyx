@@ -40,4 +40,12 @@ public final class SetStickerSetThumbnail implements TgMethod {
      */
     private InputFile thumbnail;
 
+    /**
+     * Format of the thumbnail, must be one of
+     * “static” for a .WEBP or .PNG image,
+     * “animated” for a .TGS animation,
+     * or “video” for a WEBM video
+     */
+    private StickerFormat format;
+
 }

@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.inline.ChosenInlineResult;
 import resnyx.inline.InlineQuery;
-import resnyx.messenger.chat.ChatBoostRemoved;
-import resnyx.messenger.chat.ChatBoostUpdated;
-import resnyx.messenger.chat.ChatJoinRequest;
-import resnyx.messenger.chat.ChatMemberUpdated;
+import resnyx.messenger.chat.*;
 import resnyx.messenger.general.*;
 import resnyx.messenger.keyboard.CallbackQuery;
 import resnyx.payments.PreCheckoutQuery;
@@ -53,6 +50,30 @@ public final class Update {
      */
     @JsonProperty("edited_channel_post")
     private Message editedChannelPost;
+
+    /**
+     * Optional. The bot was connected to or disconnected from a business account, or a user edited an existing connection with the bot
+     */
+    @JsonProperty("business_connection")
+    private BusinessConnection businessConnection;
+
+    /**
+     * Optional. New non-service message from a connected business account
+     */
+    @JsonProperty("business_message")
+    private Message businessMessage;
+
+    /**
+     * Optional. New version of a message from a connected business account
+     */
+    @JsonProperty("edited_business_message")
+    private Message editedBusinessMessage;
+
+    /**
+     * Optional. Messages were deleted from a connected business account
+     */
+    @JsonProperty("deleted_business_message")
+    private BusinessMessagesDeleted deletedBusinessMessage;
 
     /**
      * Optional. A reaction to a message was changed by a user.

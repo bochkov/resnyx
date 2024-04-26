@@ -16,6 +16,12 @@ import resnyx.messenger.general.Message;
 public final class SendGame implements TgMethod {
 
     /**
+     * Unique identifier of the business connection on behalf of which the message will be sent
+     */
+    @JsonProperty("business_connection_id")
+    private String businessConnectionId;
+
+    /**
      * Unique identifier for the target chat
      */
     @JsonProperty("chat_id")

@@ -1,11 +1,5 @@
 package resnyx.exec;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Map;
-import java.util.Properties;
-
 import kong.unirest.core.ContentType;
 import kong.unirest.core.HttpRequestWithBody;
 import kong.unirest.core.Unirest;
@@ -15,12 +9,19 @@ import resnyx.TgMethod;
 import resnyx.common.Caption;
 import resnyx.common.InputFile;
 import resnyx.common.SendOptions;
-import resnyx.util.TgObjectMapperConfig;
 import resnyx.messenger.general.GetMe;
 import resnyx.messenger.general.SendDocument;
+import resnyx.messenger.general.SendMessage;
+import resnyx.util.TgObjectMapperConfig;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Map;
+import java.util.Properties;
 
 @Slf4j
-class MethodTest {
+class MethodExec {
 
     private static final String USER_CHAT_ID_KEY = "user.chat.id";
     private static final String GROUP_CHAT_ID_KEY = "group.chat.id";
@@ -29,6 +30,16 @@ class MethodTest {
     private static String userChatId;
     private static String groupChatId;
     private static String botToken;
+
+    public static void setUp() throws IOException {
+        Properties props = new Properties();
+        try (FileReader reader = new FileReader("tg.properties")) {
+            props.load(reader);
+        }
+        userChatId = props.getProperty(USER_CHAT_ID_KEY);
+        groupChatId = props.getProperty(GROUP_CHAT_ID_KEY);
+        botToken = props.getProperty(BOT_TOKEN_KEY);
+    }
 
     public static String send(TgMethod method) throws IOException {
         setUp();
@@ -57,18 +68,15 @@ class MethodTest {
         return Unirest.config().getObjectMapper().readValue(result, clz);
     }
 
-    public static void setUp() throws IOException {
-        Properties props = new Properties();
-        try (FileReader reader = new FileReader("tg.properties")) {
-            props.load(reader);
-        }
-        userChatId = props.getProperty(USER_CHAT_ID_KEY);
-        groupChatId = props.getProperty(GROUP_CHAT_ID_KEY);
-        botToken = props.getProperty(BOT_TOKEN_KEY);
-    }
-
     public static void sendSimple() throws Exception {
         send(new GetMe());
+    }
+
+    public static void sendGroup() throws Exception {
+        SendMessage sm = new SendMessage(groupChatId, "Hello world");
+        SendOptions opts = new SendOptions();
+        opts.setDisableNotification(Boolean.TRUE);
+        send(sm);
     }
 
     public static void sendMultipart() throws Exception {

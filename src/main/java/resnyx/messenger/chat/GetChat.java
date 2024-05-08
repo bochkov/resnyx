@@ -9,7 +9,7 @@ import resnyx.TgMethod;
 /**
  * Use this method to get up to date information about the chat
  * (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.).
- * Returns a Chat object on success.
+ * Returns a ChatFullInfo object on success.
  */
 @Getter
 @Setter

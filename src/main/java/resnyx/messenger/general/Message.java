@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.games.Game;
+import resnyx.messenger.chat.ChatBackground;
 import resnyx.messenger.keyboard.InlineKeyboardMarkup;
 import resnyx.messenger.topic.*;
 import resnyx.messenger.videochat.VideoChatEnded;
@@ -409,6 +410,12 @@ public final class Message implements MaybeInaccessibleMessage {
      */
     @JsonProperty("boost_added")
     private ChatBoostAdded boostAdded;
+
+    /**
+     * Optional. Service message: chat background set
+     */
+    @JsonProperty("chat_background_set")
+    private ChatBackground chatBackgroundSet;
 
     /**
      * Optional. Service message: forum topic created

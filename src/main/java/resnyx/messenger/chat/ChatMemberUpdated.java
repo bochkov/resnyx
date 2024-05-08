@@ -1,7 +1,5 @@
 package resnyx.messenger.chat;
 
-import java.time.LocalDateTime;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
@@ -9,6 +7,8 @@ import lombok.NoArgsConstructor;
 import resnyx.messenger.general.Chat;
 import resnyx.messenger.general.User;
 import resnyx.util.UnixTimeDeserializer;
+
+import java.time.LocalDateTime;
 
 /**
  * This object represents changes in the status of a chat member.
@@ -50,6 +50,12 @@ public final class ChatMemberUpdated {
      */
     @JsonProperty("invite_link")
     private ChatInviteLink inviteLink;
+
+    /**
+     * Optional. True, if the user joined the chat after sending a direct join request without using an invite link and being approved by an administrator
+     */
+    @JsonProperty("via_join_request")
+    private Boolean viaJoinRequest;
 
     /**
      * Optional. True, if the user joined the chat via a chat folder invite link

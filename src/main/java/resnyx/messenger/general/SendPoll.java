@@ -1,8 +1,5 @@
 package resnyx.messenger.general;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -13,6 +10,9 @@ import resnyx.TgMethod;
 import resnyx.common.ParseMode;
 import resnyx.common.SendOptions;
 import resnyx.util.UnixTimeSerializer;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Use this method to send a native poll. On success, the sent Message is returned.
@@ -40,9 +40,24 @@ public final class SendPoll implements TgMethod {
     private final String question;
 
     /**
+     * Mode for parsing entities in the question.
+     * See formatting options for more details.
+     * Currently, only custom emoji entities are allowed
+     */
+    @JsonProperty("question_parse_mode")
+    private final ParseMode questionParseMode;
+
+    /**
+     * A JSON-serialized list of special entities that appear in the poll question.
+     * It can be specified instead of question_parse_mode
+     */
+    @JsonProperty("question_entities")
+    private final List<MessageEntity> questionEntities;
+
+    /**
      * A JSON-serialized list of answer options, 2-10 strings 1-100 characters each
      */
-    private final List<String> options;
+    private final List<InputPollOption> options;
 
     /**
      * True, if the poll needs to be anonymous, defaults to True

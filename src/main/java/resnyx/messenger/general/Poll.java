@@ -1,13 +1,13 @@
 package resnyx.messenger.general;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.util.UnixTimeDeserializer;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * This object contains information about a poll.
@@ -25,6 +25,13 @@ public final class Poll {
      * Poll question, 1-300 characters
      */
     private String question;
+
+    /**
+     * Optional. Special entities that appear in the question.
+     * Currently, only custom emoji entities are allowed in poll questions
+     */
+    @JsonProperty("question_entities")
+    private List<MessageEntity> questionEntities;
 
     /**
      * List of poll options

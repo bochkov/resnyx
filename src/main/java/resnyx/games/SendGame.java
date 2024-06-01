@@ -1,10 +1,12 @@
 package resnyx.games;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import resnyx.TgMethod;
+import resnyx.common.SendOptions;
 import resnyx.messenger.general.Message;
 
 /**
@@ -34,5 +36,7 @@ public final class SendGame implements TgMethod {
     @JsonProperty("game_short_name")
     private final String gameShortName;
 
+    @JsonUnwrapped
+    private SendOptions sendOptions;
 
 }

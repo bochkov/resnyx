@@ -1,13 +1,12 @@
 package resnyx.messenger.general;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import resnyx.TgMethod;
-import resnyx.common.ParseMode;
+import resnyx.common.Caption;
 import resnyx.messenger.keyboard.InlineKeyboardMarkup;
 
 /**
@@ -31,21 +30,8 @@ public final class EditMessageCaption implements TgMethod {
     @JsonProperty("message_id")
     private final Long messageId;
 
-    /**
-     * New caption of the message, 0-1024 characters after entities parsing
-     */
-    private final String caption;
-
-    /**
-     * Mode for parsing entities in the message caption
-     */
-    @JsonProperty("parse_mode")
-    private ParseMode parseMode;
-
-    /**
-     * A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
-     */
-    private List<MessageEntity> entities;
+    @JsonUnwrapped
+    private Caption caption;
 
     /**
      * A JSON-serialized object for an inline keyboard

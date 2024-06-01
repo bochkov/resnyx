@@ -26,4 +26,10 @@ public final class Caption {
      */
     @JsonProperty("caption_entities")
     private List<MessageEntity> captionEntities;
+
+    /**
+     * Optional. True, if the caption must be shown above the message media
+     */
+    @JsonProperty("show_caption_above_media")
+    private Boolean showCaptionAboveMedia;
 }

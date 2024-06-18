@@ -1,7 +1,5 @@
 package resnyx.messenger.general;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +7,8 @@ import lombok.Setter;
 import resnyx.TgMethod;
 import resnyx.common.ParseMode;
 import resnyx.messenger.keyboard.InlineKeyboardMarkup;
+
+import java.util.List;
 
 /**
  * Use this method to edit text and game messages.
@@ -18,6 +18,12 @@ import resnyx.messenger.keyboard.InlineKeyboardMarkup;
 @Setter
 @RequiredArgsConstructor
 public final class EditMessageText implements TgMethod {
+
+    /**
+     * Unique identifier of the business connection on behalf of which the message to be edited was sent
+     */
+    @JsonProperty("business_connection_id")
+    private String businessConnectionId;
 
     /**
      * Unique identifier for the target chat or username of the target channel (in the format @channelusername)

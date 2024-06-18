@@ -17,6 +17,12 @@ import resnyx.messenger.keyboard.InlineKeyboardMarkup;
 public final class EditMessageReplyMarkup implements TgMethod {
 
     /**
+     * Unique identifier of the business connection on behalf of which the message to be edited was sent
+     */
+    @JsonProperty("business_connection_id")
+    private String businessConnectionId;
+
+    /**
      * Identifier of the inline message
      */
     @JsonProperty("inline_message_id")

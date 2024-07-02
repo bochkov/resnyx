@@ -205,6 +205,12 @@ public final class Message implements MaybeInaccessibleMessage {
     private Document document;
 
     /**
+     * Optional. Message contains paid media; information about the paid media
+     */
+    @JsonProperty("paid_media")
+    private PaidMediaInfo paidMediaInfo;
+
+    /**
      * Optional. Message is a photo, available sizes of the photo
      */
     private List<PhotoSize> photo;

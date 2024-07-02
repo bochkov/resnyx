@@ -1,13 +1,13 @@
 package resnyx.messenger.general;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.games.Game;
 import resnyx.payments.Invoice;
 import resnyx.stickers.Sticker;
+
+import java.util.List;
 
 /**
  * This object contains information about a message that is being replied to, which may come from another chat or forum topic.
@@ -52,6 +52,12 @@ public final class ExternalReplyInfo {
      * Optional. Message is a general file, information about the file
      */
     private Document document;
+
+    /**
+     * Optional. Message contains paid media; information about the paid media
+     */
+    @JsonProperty("paid_media")
+    private PaidMediaInfo paidMediaInfo;
 
     /**
      * Optional. Message is a photo, available sizes of the photo

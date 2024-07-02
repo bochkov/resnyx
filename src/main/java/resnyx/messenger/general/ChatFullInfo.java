@@ -209,6 +209,12 @@ public final class ChatFullInfo {
     private ChatPermissions permissions;
 
     /**
+     * Optional. True, if paid media messages can be sent or forwarded to the channel chat. The field is available only for channel chats.
+     */
+    @JsonProperty("can_send_paid_media")
+    private Boolean canSendPaidMedia;
+
+    /**
      * Optional. For supergroups, the minimum allowed delay between consecutive messages sent
      * by each unpriviledged user; in seconds. Returned only in getChat.
      */

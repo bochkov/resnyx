@@ -14,6 +14,7 @@ import resnyx.messenger.videochat.VideoChatScheduled;
 import resnyx.messenger.videochat.VideoChatStarted;
 import resnyx.passport.PassportData;
 import resnyx.payments.Invoice;
+import resnyx.payments.RefundedPayment;
 import resnyx.payments.SuccessfulPayment;
 import resnyx.stickers.Sticker;
 import resnyx.util.UnixTimeDeserializer;
@@ -386,6 +387,12 @@ public final class Message implements MaybeInaccessibleMessage {
      */
     @JsonProperty("successful_payment")
     private SuccessfulPayment successfulPayment;
+
+    /**
+     * Optional. Message is a service message about a refunded payment, information about the payment.
+     */
+    @JsonProperty("refunded_payment")
+    private RefundedPayment refundedPayment;
 
     /**
      * Optional. Service message: a user was shared with the bot

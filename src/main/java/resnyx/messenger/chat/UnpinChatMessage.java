@@ -18,6 +18,12 @@ import resnyx.TgMethod;
 public final class UnpinChatMessage implements TgMethod {
 
     /**
+     * Unique identifier of the business connection on behalf of which the message will be pinned
+     */
+    @JsonProperty("business_connection_id")
+    private Boolean businessConnectionId;
+
+    /**
      * Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername)
      */
     @JsonProperty("chat_id")

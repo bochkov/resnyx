@@ -20,6 +20,12 @@ import java.util.List;
 public final class SendPaidMedia implements TgMethod {
 
     /**
+     * Unique identifier of the business connection on behalf of which the message will be sent
+     */
+    @JsonProperty("business_connection_id")
+    private String businessConnectionId;
+
+    /**
      * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
      */
     @JsonProperty("chat_id")

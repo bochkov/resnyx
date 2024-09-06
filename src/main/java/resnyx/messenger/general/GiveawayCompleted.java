@@ -28,4 +28,10 @@ public final class GiveawayCompleted {
      */
     @JsonProperty("giveaway_message")
     private Message giveawayMessage;
+
+    /**
+     * Optional. True, if the giveaway is a Telegram Star giveaway. Otherwise, currently, the giveaway is a Telegram Premium giveaway.
+     */
+    @JsonProperty("is_star_giveaway")
+    private Boolean isStarGiveaway;
 }

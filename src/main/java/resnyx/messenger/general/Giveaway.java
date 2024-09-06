@@ -1,13 +1,13 @@
 package resnyx.messenger.general;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.util.UnixTimeDeserializer;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * This object represents a message about a scheduled giveaway.
@@ -58,6 +58,12 @@ public final class Giveaway {
      */
     @JsonProperty("country_codes")
     private List<String> countryCodes;
+
+    /**
+     * Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only
+     */
+    @JsonProperty("prize_star_count")
+    private Integer prizeStarCount;
 
     /**
      * Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for

@@ -52,6 +52,12 @@ public final class GiveawayWinners {
     private Integer additionalChatCount;
 
     /**
+     * Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only
+     */
+    @JsonProperty("prize_star_count")
+    private Integer prizeStarCount;
+
+    /**
      * Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for
      */
     @JsonProperty("premium_subscription_month_count")

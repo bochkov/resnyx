@@ -5,9 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.inline.ChosenInlineResult;
 import resnyx.inline.InlineQuery;
-import resnyx.messenger.chat.*;
+import resnyx.messenger.chat.ChatBoostRemoved;
+import resnyx.messenger.chat.ChatBoostUpdated;
+import resnyx.messenger.chat.ChatJoinRequest;
+import resnyx.messenger.chat.ChatMemberUpdated;
 import resnyx.messenger.general.*;
 import resnyx.messenger.keyboard.CallbackQuery;
+import resnyx.payments.PaidMediaPurchased;
 import resnyx.payments.PreCheckoutQuery;
 import resnyx.payments.ShippingQuery;
 
@@ -122,6 +126,12 @@ public final class Update {
      */
     @JsonProperty("pre_checkout_query")
     private PreCheckoutQuery preCheckoutQuery;
+
+    /**
+     * Optional. A user purchased paid media with a non-empty payload sent by the bot in a non-channel chat
+     */
+    @JsonProperty("purchased_paid_media")
+    private PaidMediaPurchased purchasedPaidMedia;
 
     /**
      * Optional. New poll state. Bots receive only updates about stopped polls and polls, which are sent by the bot

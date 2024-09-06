@@ -42,6 +42,11 @@ public final class SendPaidMedia implements TgMethod {
      */
     private final List<InputPaidMedia> media;
 
+    /**
+     * Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.
+     */
+    private String payload;
+
     @JsonUnwrapped
     private Caption caption;
 

@@ -71,6 +71,12 @@ public final class InlineKeyboardButton {
     private SwitchInlineQueryChosenChat switchInlineQueryChosenChat;
 
     /**
+     * Optional. Description of the button that copies the specified text to the clipboard.
+     */
+    @JsonProperty("copy_text")
+    private CopyTextButton copyText;
+
+    /**
      * Optional. Description of the game that will be launched when the user presses the button.
      * <p>
      * NOTE: This type of button must always be the first button in the first row.

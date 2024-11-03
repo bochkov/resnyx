@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'resnyx'
-version = '7.10'
+version = '7.11'
 
 java {
     toolchain {
@@ -27,7 +27,7 @@ repositories {
 
 dependencies {
     implementation 'org.slf4j:slf4j-api:2.0.9'
-    implementation platform('com.fasterxml.jackson:jackson-bom:2.17.2')
+    implementation platform('com.fasterxml.jackson:jackson-bom:2.18.1')
     implementation 'com.fasterxml.jackson.core:jackson-annotations'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
@@ -38,12 +38,12 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.3'
     testImplementation 'org.assertj:assertj-core:3.26.3'
-    testImplementation 'org.mockito:mockito-core:5.13.0'
-    testImplementation 'org.mockito:mockito-junit-jupiter:5.13.0'
-    testImplementation 'ch.qos.logback:logback-classic:1.5.7'
-    testImplementation platform('com.konghq:unirest-java-bom:4.4.4')
+    testImplementation 'org.mockito:mockito-core:5.14.2'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.14.2'
+    testImplementation 'ch.qos.logback:logback-classic:1.5.12'
+    testImplementation platform('com.konghq:unirest-java-bom:4.4.5')
     testImplementation 'com.konghq:unirest-java-core'
     testImplementation 'com.konghq:unirest-modules-jackson'
 }
@@ -66,5 +66,15 @@ publishing {
         maven(MavenPublication) {
             from components.java
         }
+    }
+}
+
+def isNonStable = { String version ->
+    return ['*-alpha\\d+'].any { it -> version.toLowerCase().matches(it) }
+}
+
+tasks.named("dependencyUpdates").configure {
+    rejectVersionIf {
+        isNonStable(it.candidate.version)
     }
 }

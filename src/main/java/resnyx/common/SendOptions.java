@@ -27,6 +27,14 @@ public class SendOptions {
     private Boolean protectContent;
 
     /**
+     * Pass True to allow up to 1000 messages per second, ignoring broadcasting
+     * limits for a fee of 0.1 Telegram Stars per message.
+     * The relevant Stars will be withdrawn from the bot's balance
+     */
+    @JsonProperty("allow_paid_broadcast")
+    private Boolean allowPaidBroadcast;
+
+    /**
      * Unique identifier of the message effect to be added to the message; for private chats only
      */
     @JsonProperty("message_effect_id")

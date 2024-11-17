@@ -32,6 +32,12 @@ public final class TransactionPartnerUser implements TransactionPartner {
     private String invoicePayload;
 
     /**
+     * Optional. The duration of the paid subscription
+     */
+    @JsonProperty("subscription_period")
+    private Integer subscriptionPeriod;
+
+    /**
      * Optional. Information about the paid media bought by the user
      */
     @JsonProperty("paid_media")
@@ -42,4 +48,9 @@ public final class TransactionPartnerUser implements TransactionPartner {
      */
     @JsonProperty("paid_media_payload")
     private String paidMediaPayload;
+
+    /**
+     * Optional. The gift sent to the user by the bot
+     */
+    private String gift;
 }

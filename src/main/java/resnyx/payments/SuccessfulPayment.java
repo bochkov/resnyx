@@ -1,8 +1,12 @@
 package resnyx.payments;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import resnyx.util.UnixTimeDeserializer;
+
+import java.time.LocalDateTime;
 
 /**
  * This object contains basic information about a successful payment.
@@ -29,6 +33,25 @@ public final class SuccessfulPayment {
      */
     @JsonProperty("invoice_payload")
     private String invoicePayload;
+
+    /**
+     * Optional. Expiration date of the subscription, in Unix time; for recurring payments only
+     */
+    @JsonProperty("subscription_expiration_date")
+    @JsonDeserialize(using = UnixTimeDeserializer.class)
+    private LocalDateTime subscriptionExpirationDate;
+
+    /**
+     * Optional. True, if the payment is a recurring payment for a subscription
+     */
+    @JsonProperty("is_recurring")
+    private Boolean isRecurring;
+
+    /**
+     * Optional. True, if the payment is the first payment for a subscription
+     */
+    @JsonProperty("is_first_recurring")
+    private Boolean isFirstRecurring;
 
     /**
      * Optional. Identifier of the shipping option chosen by the user

@@ -1,12 +1,12 @@
 package resnyx.payments;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import resnyx.TgMethod;
+
+import java.util.List;
 
 /**
  * Use this method to create a link for an invoice. Returns the created invoice link as String on success.
@@ -15,6 +15,12 @@ import resnyx.TgMethod;
 @Setter
 @RequiredArgsConstructor
 public final class CreateInvoiceLink implements TgMethod {
+
+    /**
+     * Unique identifier of the business connection on behalf of which the link will be created
+     */
+    @JsonProperty("business_connection_id")
+    private String businessConnectionId;
 
     /**
      * Product name, 1-32 characters
@@ -47,6 +53,14 @@ public final class CreateInvoiceLink implements TgMethod {
      * Must contain exactly one item for payments in Telegram Stars.
      */
     private final List<LabeledPrice> prices;
+
+    /**
+     * The number of seconds the subscription will be active for before the next payment.
+     * The currency must be set to “XTR” (Telegram Stars) if the parameter is used.
+     * Currently, it must always be 2592000 (30 days) if specified.
+     */
+    @JsonProperty("subscription_period")
+    private Integer subscriptionPeriod;
 
     /**
      * The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double).

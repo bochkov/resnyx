@@ -26,6 +26,11 @@ public final class TransactionPartnerUser implements TransactionPartner {
     private User user;
 
     /**
+     * Optional. Information about the affiliate that received a commission via this transaction
+     */
+    private AffiliateInfo affiliate;
+
+    /**
      * Optional. Bot-specified invoice payload
      */
     @JsonProperty("invoice_payload")

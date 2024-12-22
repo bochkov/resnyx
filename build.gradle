@@ -20,14 +20,14 @@ java {
 repositories {
     mavenCentral()
     maven {
-        name "reposiliteRepositoryReleases"
-        url "https://maven.sergeybochkov.com/releases"
+        name = "reposiliteRepositoryReleases"
+        url = "https://maven.sergeybochkov.com/releases"
     }
 }
 
 dependencies {
     implementation 'org.slf4j:slf4j-api:2.0.16'
-    implementation platform('com.fasterxml.jackson:jackson-bom:2.18.1')
+    implementation platform('com.fasterxml.jackson:jackson-bom:2.18.2')
     implementation 'com.fasterxml.jackson.core:jackson-annotations'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
@@ -38,11 +38,11 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.3'
-    testImplementation 'org.assertj:assertj-core:3.26.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testImplementation 'org.assertj:assertj-core:3.27.0'
     testImplementation 'org.mockito:mockito-core:5.14.2'
     testImplementation 'org.mockito:mockito-junit-jupiter:5.14.2'
-    testImplementation 'ch.qos.logback:logback-classic:1.5.12'
+    testImplementation 'ch.qos.logback:logback-classic:1.5.15'
     testImplementation platform('com.konghq:unirest-java-bom:4.4.5')
     testImplementation 'com.konghq:unirest-java-core'
     testImplementation 'com.konghq:unirest-modules-jackson'

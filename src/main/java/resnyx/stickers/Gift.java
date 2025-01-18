@@ -28,6 +28,12 @@ public final class Gift {
     private Integer starCount;
 
     /**
+     * Optional. The number of Telegram Stars that must be paid to upgrade the gift to a unique one
+     */
+    @JsonProperty("upgrade_star_count")
+    private Integer upgradeStarCount;
+
+    /**
      * Optional. The total number of the gifts of this type that can be sent; for limited gifts only
      */
     @JsonProperty("total_count")

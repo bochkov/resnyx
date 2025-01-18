@@ -30,6 +30,12 @@ public final class SendGift implements TgMethod {
     private final String giftId;
 
     /**
+     * Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver
+     */
+    @JsonProperty("pay_for_upgrade")
+    private Boolean payForUpgrade;
+
+    /**
      * Text that will be shown along with the gift; 0-255 characters
      */
     private String text;

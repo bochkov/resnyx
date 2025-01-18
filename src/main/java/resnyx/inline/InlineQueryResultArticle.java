@@ -45,10 +45,9 @@ public final class InlineQueryResultArticle implements InlineQueryResult {
     private String url;
 
     /**
-     * Optional. Pass True if you don't want the URL to be shown in the message
+     * Optional. Short description of the result
      */
-    @JsonProperty("hide_url")
-    private Boolean hideUrl;
+    private String description;
 
     /**
      * Optional. Url of the thumbnail for the result

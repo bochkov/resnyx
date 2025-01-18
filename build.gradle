@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'resnyx'
-version = '8.0'
+version = '8.1'
 
 java {
     toolchain {
@@ -39,10 +39,10 @@ dependencies {
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
-    testImplementation 'org.assertj:assertj-core:3.27.0'
-    testImplementation 'org.mockito:mockito-core:5.14.2'
-    testImplementation 'org.mockito:mockito-junit-jupiter:5.14.2'
-    testImplementation 'ch.qos.logback:logback-classic:1.5.15'
+    testImplementation 'org.assertj:assertj-core:3.27.2'
+    testImplementation 'org.mockito:mockito-core:5.15.2'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.15.2'
+    testImplementation 'ch.qos.logback:logback-classic:1.5.16'
     testImplementation platform('com.konghq:unirest-java-bom:4.4.5')
     testImplementation 'com.konghq:unirest-java-core'
     testImplementation 'com.konghq:unirest-modules-jackson'

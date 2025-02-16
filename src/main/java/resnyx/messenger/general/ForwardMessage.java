@@ -35,6 +35,12 @@ public final class ForwardMessage implements TgMethod {
     private final String fromChatId;
 
     /**
+     * New start timestamp for the forwarded video in the message
+     */
+    @JsonProperty("video_start_timestamp")
+    private Integer videoStartTimestamp;
+
+    /**
      * Sends the message silently. Users will receive a notification with no sound.
      */
     @JsonProperty("disable_notification")

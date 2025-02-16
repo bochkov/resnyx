@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.common.FileAttr;
 
+import java.util.List;
+
 /**
  * This object represents a video file.
  */
@@ -35,6 +37,17 @@ public final class Video {
      * Optional. Video thumbnail
      */
     private PhotoSize thumbnail;
+
+    /**
+     * Optional. Available sizes of the cover of the video in the message
+     */
+    private List<PhotoSize> cover;
+
+    /**
+     * Optional. Timestamp in seconds from which the video will play in the message
+     */
+    @JsonProperty("start_timestamp")
+    private Integer startTimestamp;
 
     /**
      * Optional. Original filename as defined by sender

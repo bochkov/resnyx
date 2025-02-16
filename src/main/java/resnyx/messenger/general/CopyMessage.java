@@ -38,6 +38,12 @@ public final class CopyMessage implements TgMethod {
     @JsonProperty("message_id")
     private final Long messageId;
 
+    /**
+     * New start timestamp for the copied video in the message
+     */
+    @JsonProperty("video_start_timestamp")
+    private Integer videoStartTimestamp;
+
     @JsonUnwrapped
     private Caption caption;
 

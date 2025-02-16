@@ -2,11 +2,11 @@ plugins {
     id 'java'
     id 'idea'
     id 'maven-publish'
-    id 'com.github.ben-manes.versions' version '0.51.0'
+    id 'com.github.ben-manes.versions' version '0.52.0'
 }
 
 group = 'resnyx'
-version = '8.2'
+version = '8.3'
 
 java {
     toolchain {
@@ -39,7 +39,7 @@ dependencies {
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
-    testImplementation 'org.assertj:assertj-core:3.27.2'
+    testImplementation 'org.assertj:assertj-core:3.27.3'
     testImplementation 'org.mockito:mockito-core:5.15.2'
     testImplementation 'org.mockito:mockito-junit-jupiter:5.15.2'
     testImplementation 'ch.qos.logback:logback-classic:1.5.16'

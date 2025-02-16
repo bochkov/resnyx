@@ -18,10 +18,17 @@ import java.util.List;
 public final class SendGift implements TgMethod {
 
     /**
-     * Unique identifier of the target user that will receive the gift
+     * Required if chat_id is not specified. Unique identifier of the target user who will receive the gift.
      */
     @JsonProperty("user_id")
-    private final Long userId;
+    private Long userId;
+
+    /**
+     * Required if user_id is not specified.
+     * Unique identifier for the chat or username of the channel (in the format @channelusername) that will receive the gift.
+     */
+    @JsonProperty("chat_id")
+    private String chatId;
 
     /**
      * Identifier of the gift

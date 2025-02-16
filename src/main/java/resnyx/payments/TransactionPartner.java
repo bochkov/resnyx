@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  * This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of:
  * <ul>
  * <li>{@link TransactionPartnerUser}</li>
+ * <li>{@link TransactionPartnerChat}</li>
  * <li>{@link TransactionPartnerAffiliateProgram}</li>
  * <li>{@link TransactionPartnerFragment}</li>
  * <li>{@link TransactionPartnerTelegramAds}</li>
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type", visible = true)
 @JsonSubTypes({
         @JsonSubTypes.Type(name = "user", value = TransactionPartnerUser.class),
+        @JsonSubTypes.Type(name = "chat", value = TransactionPartnerChat.class),
         @JsonSubTypes.Type(name = "affiliate_program", value = TransactionPartnerAffiliateProgram.class),
         @JsonSubTypes.Type(name = "fragment", value = TransactionPartnerFragment.class),
         @JsonSubTypes.Type(name = "telegram_ads", value = TransactionPartnerTelegramAds.class),

@@ -32,6 +32,20 @@ public final class InputMediaVideo implements InputMedia {
     @JsonUnwrapped
     private InputFile thumbnail;
 
+    /**
+     * Optional. Cover for the video in the message.
+     * Pass a file_id to send a file that exists on the Telegram servers (recommended),
+     * pass an HTTP URL for Telegram to get a file from the Internet,
+     * or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name
+     */
+    private String cover;
+
+    /**
+     * Optional. Start timestamp for the video in the message
+     */
+    @JsonProperty("start_timestamp")
+    private Integer startTimestamp;
+
     @JsonUnwrapped
     private Caption caption;
 

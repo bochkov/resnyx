@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import resnyx.TgMethod;
+import resnyx.TgMethodName;
 
 /**
  * Use this method to get data for high score tables.
@@ -18,6 +19,7 @@ import resnyx.TgMethod;
 @Getter
 @Setter
 @RequiredArgsConstructor
+@TgMethodName("getGameHighScores")
 public final class GetInlineGameHighScores implements TgMethod {
 
     /**
@@ -31,9 +33,4 @@ public final class GetInlineGameHighScores implements TgMethod {
      */
     @JsonProperty("inline_message_id")
     private final Long inlineMessageId;
-
-    @Override
-    public String methodName() {
-        return "getGameHighScores";
-    }
 }

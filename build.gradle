@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'resnyx'
-version = '8.3'
+version = '9.0'
 
 java {
     toolchain {
@@ -26,23 +26,23 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.slf4j:slf4j-api:2.0.16'
-    implementation platform('com.fasterxml.jackson:jackson-bom:2.18.2')
+    implementation 'org.slf4j:slf4j-api:2.0.17'
+    implementation platform('com.fasterxml.jackson:jackson-bom:2.18.3')
     implementation 'com.fasterxml.jackson.core:jackson-annotations'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 
-    compileOnly 'org.projectlombok:lombok:1.18.36'
-    annotationProcessor 'org.projectlombok:lombok:1.18.36'
-    testCompileOnly 'org.projectlombok:lombok:1.18.36'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
+    compileOnly 'org.projectlombok:lombok:1.18.38'
+    annotationProcessor 'org.projectlombok:lombok:1.18.38'
+    testCompileOnly 'org.projectlombok:lombok:1.18.38'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.38'
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.12.2'
     testImplementation 'org.assertj:assertj-core:3.27.3'
-    testImplementation 'org.mockito:mockito-core:5.15.2'
-    testImplementation 'org.mockito:mockito-junit-jupiter:5.15.2'
-    testImplementation 'ch.qos.logback:logback-classic:1.5.16'
+    testImplementation 'org.mockito:mockito-core:5.17.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.17.0'
+    testImplementation 'ch.qos.logback:logback-classic:1.5.18'
     testImplementation platform('com.konghq:unirest-java-bom:4.4.5')
     testImplementation 'com.konghq:unirest-java-core'
     testImplementation 'com.konghq:unirest-modules-jackson'
@@ -70,10 +70,11 @@ publishing {
 }
 
 def isNonStable = { String version ->
-    return ['.*-alpha\\d+'].any { it -> version.toLowerCase().matches(it) }
+    return ['.*-alpha\\d+', '.*-M\\d+', '.*-rc\\d+'].any { it -> version.matches(it) }
 }
 
 tasks.named("dependencyUpdates").configure {
+    checkForGradleUpdate = false
     rejectVersionIf {
         isNonStable(it.candidate.version)
     }

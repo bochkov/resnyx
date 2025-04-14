@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import resnyx.messenger.business.BusinessBotRights;
 import resnyx.util.UnixTimeSerializer;
 
 import java.time.LocalDateTime;
@@ -40,10 +41,9 @@ public final class BusinessConnection {
     private LocalDateTime date;
 
     /**
-     * True, if the bot can act on behalf of the business account in chats that were active in the last 24 hours
+     * Optional. Rights of the business bot
      */
-    @JsonProperty("can_reply")
-    private Boolean canReply;
+    private BusinessBotRights rights;
 
     /**
      * True, if the connection is active

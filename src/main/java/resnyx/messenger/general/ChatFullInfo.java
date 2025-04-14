@@ -209,10 +209,10 @@ public final class ChatFullInfo {
     private ChatPermissions permissions;
 
     /**
-     * Optional. True, if gifts can be sent to the chat
+     * Information about types of gifts that are accepted by the chat or by the corresponding user for private chats
      */
-    @JsonProperty("can_send_gift")
-    private Boolean canSendGift;
+    @JsonProperty("accepted_gift_types")
+    private AcceptedGiftTypes acceptedGiftTypes;
 
     /**
      * Optional. True, if paid media messages can be sent or forwarded to the channel chat. The field is available only for channel chats.

@@ -168,6 +168,12 @@ public final class Message implements MaybeInaccessibleMessage {
     private String authorSignature;
 
     /**
+     * Optional. The number of Telegram Stars that were paid by the sender of the message to send it
+     */
+    @JsonProperty("paid_star_count")
+    private Integer paidStarCount;
+
+    /**
      * Optional. For text messages, the actual UTF-8 text of the message
      */
     private String text;
@@ -407,6 +413,17 @@ public final class Message implements MaybeInaccessibleMessage {
     private ChatShared chatShared;
 
     /**
+     * Optional. Service message: a regular gift was sent or received
+     */
+    private GiftInfo gift;
+
+    /**
+     * Optional. Service message: a unique gift was sent or received
+     */
+    @JsonProperty("unique_gift")
+    private UniqueGiftInfo uniqueGift;
+
+    /**
      * Optional. The domain name of the website on which the user has logged in
      */
     @JsonProperty("connected_website")
@@ -500,6 +517,12 @@ public final class Message implements MaybeInaccessibleMessage {
      */
     @JsonProperty("giveaway_completed")
     private GiveawayCompleted giveawayCompleted;
+
+    /**
+     * Optional. Service message: the price for paid messages has changed in the chat
+     */
+    @JsonProperty("paid_message_price_changed")
+    private PaidMessagePriceChanged paidMessagePriceChanged;
 
     /**
      * Optional. Service message: video chat scheduled

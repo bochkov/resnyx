@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import resnyx.stickers.Gift;
 import resnyx.util.UnixTimeDeserializer;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -62,5 +63,13 @@ public final class OwnedGiftUnique implements OwnedGift {
      */
     @JsonProperty("transfer_star_count")
     private Integer transferStarCount;
+
+    /**
+     * Optional. Point in time (Unix timestamp) when the gift can be transferred.
+     * If it is in the past, then the gift can be transferred now
+     */
+    @JsonProperty("next_transfer_date")
+    @JsonDeserialize(using = UnixTimeDeserializer.class)
+    private LocalDateTime nextTransferDate;
 
 }

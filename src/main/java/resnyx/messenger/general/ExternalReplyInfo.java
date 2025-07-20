@@ -97,6 +97,11 @@ public final class ExternalReplyInfo {
     private Boolean hasMediaSpoiler;
 
     /**
+     * Optional. Message is a checklist
+     */
+    private Checklist checklist;
+
+    /**
      * Optional. Message is a shared contact, information about the contact
      */
     private Contact contact;

@@ -32,6 +32,13 @@ public final class SendPaidMedia implements TgMethod {
     private final String chatId;
 
     /**
+     * Identifier of the direct messages topic to which the message will be sent;
+     * required if the message is sent to a direct messages chat
+     */
+    @JsonProperty("direct_messages_topic_id")
+    private Integer directMessagesTopicId;
+
+    /**
      * The number of Telegram Stars that must be paid to buy access to the media
      */
     @JsonProperty("star_counter")

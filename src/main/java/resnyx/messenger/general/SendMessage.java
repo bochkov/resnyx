@@ -1,7 +1,5 @@
 package resnyx.messenger.general;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import lombok.Getter;
@@ -10,6 +8,8 @@ import lombok.Setter;
 import resnyx.TgMethod;
 import resnyx.common.ParseMode;
 import resnyx.common.SendOptions;
+
+import java.util.List;
 
 /**
  * Use this method to send text messages. On success, the sent {@link Message} is returned.
@@ -30,6 +30,13 @@ public final class SendMessage implements TgMethod {
      */
     @JsonProperty("chat_id")
     private final String chatId;
+
+    /**
+     * Identifier of the direct messages topic to which the message will be sent;
+     * required if the message is sent to a direct messages chat
+     */
+    @JsonProperty("direct_messages_topic_id")
+    private Integer directMessagesTopicId;
 
     /**
      * Text of the message to be sent, 1-4096 characters after entities parsing

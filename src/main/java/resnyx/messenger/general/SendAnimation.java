@@ -33,6 +33,13 @@ public final class SendAnimation implements TgMethod {
     private final String chatId;
 
     /**
+     * Identifier of the direct messages topic to which the message will be sent;
+     * required if the message is sent to a direct messages chat
+     */
+    @JsonProperty("direct_messages_topic_id")
+    private Integer directMessagesTopicId;
+
+    /**
      * Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended),
      * pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data.
      */

@@ -29,6 +29,13 @@ public final class ForwardMessage implements TgMethod {
     private Long messageThreadId;
 
     /**
+     * Identifier of the direct messages topic to which the message will be sent;
+     * required if the message is sent to a direct messages chat
+     */
+    @JsonProperty("direct_messages_topic_id")
+    private Integer directMessagesTopicId;
+
+    /**
      * Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)
      */
     @JsonProperty("from_chat_id")
@@ -51,6 +58,13 @@ public final class ForwardMessage implements TgMethod {
      */
     @JsonProperty("protect_content")
     private Boolean protectContent;
+
+    /**
+     * A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only.
+     * If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
+     */
+    @JsonProperty("suggested_post_parameters")
+    private SuggestedPostParameters suggestedPostParameters;
 
     /**
      * Message identifier in the chat specified in from_chat_id

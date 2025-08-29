@@ -3,6 +3,7 @@ package resnyx.common;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import resnyx.messenger.general.ReplyParameters;
+import resnyx.messenger.general.SuggestedPostParameters;
 import resnyx.messenger.keyboard.ReplyMarkup;
 
 @Data
@@ -39,6 +40,13 @@ public class SendOptions {
      */
     @JsonProperty("message_effect_id")
     private String messageEffectId;
+
+    /**
+     * A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only.
+     * If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
+     */
+    @JsonProperty("suggested_post_parameters")
+    private SuggestedPostParameters suggestedPostParameters;
 
     /**
      * Description of the message to reply to

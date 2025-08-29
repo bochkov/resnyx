@@ -61,6 +61,12 @@ public final class ChatFullInfo {
     private Boolean isForum;
 
     /**
+     * Optional. True, if the chat is the direct messages chat of a channel
+     */
+    @JsonProperty("is_direct_messages")
+    private Boolean isDirectMessages;
+
+    /**
      * Optional. Identifier of the accent color for the chat name and backgrounds of the chat photo, reply header,
      * and link preview. See accent colors for more details. Returned only in getChat. Always returned in getChat.
      */
@@ -113,6 +119,12 @@ public final class ChatFullInfo {
      */
     @JsonProperty("personal_chat")
     private Chat personalChat;
+
+    /**
+     * Optional. Information about the corresponding channel chat; for direct messages chats only
+     */
+    @JsonProperty("parent_chat")
+    private Chat parentChat;
 
     /**
      * Optional. List of available reactions allowed in the chat.

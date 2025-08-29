@@ -1,5 +1,6 @@
 package resnyx.messenger.chat;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,7 @@ public final class ChatMemberMember implements ChatMember {
     /**
      * Optional. Date when the user's subscription will expire; Unix time
      */
+    @JsonProperty("until_date")
     @JsonDeserialize(using = UnixTimeDeserializer.class)
     private LocalDate untilDate;
 

@@ -42,6 +42,12 @@ public final class Message implements MaybeInaccessibleMessage {
     private Long messageThreadId;
 
     /**
+     * Optional. Information about the direct messages chat topic that contains the message
+     */
+    @JsonProperty("direct_messages_topic")
+    private DirectMessagesTopic directMessagesTopic;
+
+    /**
      * Optional. Sender of the message; empty for messages sent to channels.
      * For backward compatibility, the field contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.
      */
@@ -130,6 +136,12 @@ public final class Message implements MaybeInaccessibleMessage {
     private Story replyToStory;
 
     /**
+     * Optional. Identifier of the specific checklist task that is being replied to
+     */
+    @JsonProperty("reply_to_checklist_task_id")
+    private Integer replyToChecklistTaskId;
+
+    /**
      * Optional. Bot through which the message was sent
      */
     @JsonProperty("via_bot")
@@ -154,6 +166,13 @@ public final class Message implements MaybeInaccessibleMessage {
      */
     @JsonProperty("is_from_offline")
     private Boolean isFromOffline;
+
+    /**
+     * Optional. True, if the message is a paid post.
+     * Note that such posts must not be deleted for 24 hours to receive the payment and can't be edited.
+     */
+    @JsonProperty("is_paid_post")
+    private Boolean isPaidPost;
 
     /**
      * Optional. The unique identifier of a media message group this message belongs to
@@ -546,6 +565,36 @@ public final class Message implements MaybeInaccessibleMessage {
      */
     @JsonProperty("paid_message_price_changed")
     private PaidMessagePriceChanged paidMessagePriceChanged;
+
+    /**
+     * Optional. Service message: a suggested post was approved
+     */
+    @JsonProperty("suggested_post_approved")
+    private SuggestedPostApproved suggestedPostApproved;
+
+    /**
+     * Optional. Service message: approval of a suggested post has failed
+     */
+    @JsonProperty("suggested_post_approval_failed")
+    private SuggestedPostApprovalFailed suggestedPostApprovalFailed;
+
+    /**
+     * Optional. Service message: a suggested post was declined
+     */
+    @JsonProperty("suggested_post_declined")
+    private SuggestedPostDeclined suggestedPostDeclined;
+
+    /**
+     * Optional. Service message: payment for a suggested post was received
+     */
+    @JsonProperty("suggested_post_paid")
+    private SuggestedPostPaid suggestedPostPaid;
+
+    /**
+     * Optional. Service message: payment for a suggested post was refunded
+     */
+    @JsonProperty("suggested_post_refunded")
+    private SuggestedPostRefunded suggestedPostRefunded;
 
     /**
      * Optional. Service message: video chat scheduled

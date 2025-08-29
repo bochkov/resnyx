@@ -25,6 +25,13 @@ public final class SendLocation implements TgMethod {
     @JsonProperty("chat_id")
     private final String chatId;
 
+    /**
+     * Identifier of the direct messages topic to which the message will be sent;
+     * required if the message is sent to a direct messages chat
+     */
+    @JsonProperty("direct_messages_topic_id")
+    private Integer directMessagesTopicId;
+
     @JsonUnwrapped
     private Location location;
 

@@ -28,6 +28,13 @@ public final class SendPhoto implements TgMethod {
     private final String chatId;
 
     /**
+     * Identifier of the direct messages topic to which the message will be sent;
+     * required if the message is sent to a direct messages chat
+     */
+    @JsonProperty("direct_messages_topic_id")
+    private Integer directMessagesTopicId;
+
+    /**
      * Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended),
      * pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.
      * The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total.

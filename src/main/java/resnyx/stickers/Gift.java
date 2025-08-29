@@ -3,6 +3,7 @@ package resnyx.stickers;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import resnyx.messenger.general.Chat;
 
 /**
  * This object represents a gift that can be sent by the bot.
@@ -44,4 +45,10 @@ public final class Gift {
      */
     @JsonProperty("remaining_count")
     private Integer remainingCount;
+
+    /**
+     * Optional. Information about the chat that published the gift
+     */
+    @JsonProperty("publisher_chat")
+    private Chat publisherChat;
 }

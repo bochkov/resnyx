@@ -41,4 +41,10 @@ public final class UniqueGift {
      * Backdrop of the gift
      */
     private UniqueGiftBackdrop backdrop;
+
+    /**
+     * Optional. Information about the chat that published the gift
+     */
+    @JsonProperty("publisher_chat")
+    private Chat publisherChat;
 }

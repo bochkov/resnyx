@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'resnyx'
-version = '9.1'
+version = '9.2'
 
 java {
     toolchain {
@@ -27,7 +27,7 @@ repositories {
 
 dependencies {
     implementation 'org.slf4j:slf4j-api:2.0.17'
-    implementation platform('com.fasterxml.jackson:jackson-bom:2.19.2')
+    implementation platform('com.fasterxml.jackson:jackson-bom:2.20.0')
     implementation 'com.fasterxml.jackson.core:jackson-annotations'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
@@ -38,10 +38,10 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.38'
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.13.3'
-    testImplementation 'org.assertj:assertj-core:3.27.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.13.4'
+    testImplementation 'org.assertj:assertj-core:3.27.4'
     testImplementation 'org.mockito:mockito-core:5.17.0'
-    testImplementation 'org.mockito:mockito-junit-jupiter:5.18.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.19.0'
     testImplementation 'ch.qos.logback:logback-classic:1.5.18'
     testImplementation platform('com.konghq:unirest-java-bom:4.5.0')
     testImplementation 'com.konghq:unirest-java-core'
@@ -70,7 +70,7 @@ publishing {
 }
 
 def isNonStable = { String version ->
-    return ['.*-alpha\\d+', '.*-M\\d+', '.*-rc\\d+'].any { it -> version.matches(it) }
+    return ['.*-alpha\\d+', '.*-M\\d+', '.*-rc\\d+', '.*-RC\\d+'].any { it -> version.matches(it) }
 }
 
 tasks.named("dependencyUpdates").configure {

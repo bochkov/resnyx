@@ -31,6 +31,13 @@ public final class SendSticker implements TgMethod {
     private final String chatId;
 
     /**
+     * Identifier of the direct messages topic to which the message will be sent;
+     * required if the message is sent to a direct messages chat
+     */
+    @JsonProperty("direct_messages_topic_id")
+    private Integer directMessagesTopicId;
+
+    /**
      * Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended),
      * pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet,
      * or upload a new .WEBP or .TGS sticker using multipart/form-data.

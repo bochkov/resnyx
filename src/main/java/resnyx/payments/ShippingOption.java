@@ -1,9 +1,9 @@
 package resnyx.payments;
 
-import java.util.List;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /**
  * This object represents one shipping option.

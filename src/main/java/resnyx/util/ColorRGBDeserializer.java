@@ -1,15 +1,15 @@
 package resnyx.util;
 
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.ValueDeserializer;
+
 import java.awt.*;
-import java.io.IOException;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-
-public final class ColorRGBDeserializer extends JsonDeserializer<Color> {
+public final class ColorRGBDeserializer extends ValueDeserializer<Color> {
     @Override
-    public Color deserialize(JsonParser parser, DeserializationContext context) throws IOException {
+    public Color deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
         int ll = parser.getIntValue();
         int red = (ll & 0x00FF0000) >> 16;
         int green = (ll & 0x0000FF00) >> 8;

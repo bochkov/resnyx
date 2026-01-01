@@ -1,14 +1,14 @@
 package resnyx.messenger.general;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.messenger.chat.ReactionType;
 import resnyx.util.UnixTimeDeserializer;
+import tools.jackson.databind.annotation.JsonDeserialize;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * This object represents a change of a reaction on a message performed by a user.

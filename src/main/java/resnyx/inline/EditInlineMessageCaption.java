@@ -1,7 +1,5 @@
 package resnyx.inline;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +9,8 @@ import resnyx.TgMethodName;
 import resnyx.common.ParseMode;
 import resnyx.messenger.general.MessageEntity;
 import resnyx.messenger.keyboard.InlineKeyboardMarkup;
+
+import java.util.List;
 
 /**
  * Use this method to edit captions of messages.

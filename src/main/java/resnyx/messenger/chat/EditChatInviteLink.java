@@ -1,14 +1,14 @@
 package resnyx.messenger.chat;
 
-import java.time.LocalDateTime;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import resnyx.TgMethod;
 import resnyx.util.UnixTimeSerializer;
+import tools.jackson.databind.annotation.JsonSerialize;
+
+import java.time.LocalDateTime;
 
 /**
  * Use this method to edit a non-primary invite link created by the bot.

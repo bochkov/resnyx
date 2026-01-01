@@ -1,12 +1,12 @@
 package resnyx.messenger.videochat;
 
-import java.time.LocalDateTime;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.util.UnixTimeDeserializer;
+import tools.jackson.databind.annotation.JsonDeserialize;
+
+import java.time.LocalDateTime;
 
 /**
  * This object represents a service message about a video chat scheduled in the chat.

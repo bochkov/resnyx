@@ -1,17 +1,18 @@
 package resnyx.util;
 
-import java.io.IOException;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.TimeZone;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
+public final class UnixTimeSerializer extends ValueSerializer<LocalDateTime> {
 
-public final class UnixTimeSerializer extends JsonSerializer<LocalDateTime> {
     @Override
-    public void serialize(LocalDateTime value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+    public void serialize(LocalDateTime value, JsonGenerator gen, SerializationContext ctx) throws JacksonException {
         Instant instant = value.atZone(TimeZone.getDefault().toZoneId()).toInstant();
         gen.writeNumber(instant.getEpochSecond());
     }

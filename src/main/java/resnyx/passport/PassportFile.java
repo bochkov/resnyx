@@ -1,14 +1,14 @@
 package resnyx.passport;
 
-import java.time.LocalDateTime;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.common.FileAttr;
 import resnyx.util.UnixTimeDeserializer;
+import tools.jackson.databind.annotation.JsonDeserialize;
+
+import java.time.LocalDateTime;
 
 /**
  * This object represents a file uploaded to Telegram Passport.

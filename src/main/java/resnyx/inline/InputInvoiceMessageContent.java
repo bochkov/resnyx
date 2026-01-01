@@ -1,11 +1,11 @@
 package resnyx.inline;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.payments.LabeledPrice;
+
+import java.util.List;
 
 /**
  * Represents the content of an invoice message to be sent as the result of an inline query.

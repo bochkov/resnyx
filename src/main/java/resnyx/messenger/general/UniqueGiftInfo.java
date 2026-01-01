@@ -1,10 +1,10 @@
 package resnyx.messenger.general;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.util.UnixTimeDeserializer;
+import tools.jackson.databind.annotation.JsonDeserialize;
 
 import java.time.LocalDateTime;
 
@@ -46,7 +46,8 @@ public final class UniqueGiftInfo {
     private Integer transferStarCount;
 
     /**
-     * Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now
+     * Optional. Point in time (Unix timestamp) when the gift can be transferred.
+     * If it is in the past, then the gift can be transferred now
      */
     @JsonProperty("next_transfer_date")
     @JsonDeserialize(using = UnixTimeDeserializer.class)

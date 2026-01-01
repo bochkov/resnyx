@@ -1,10 +1,10 @@
 package resnyx.messenger.keyboard;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /**
  * This object represents an inline keyboard that appears right next to the message it belongs to.

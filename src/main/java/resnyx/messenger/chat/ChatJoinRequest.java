@@ -1,14 +1,14 @@
 package resnyx.messenger.chat;
 
-import java.time.LocalDateTime;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.messenger.general.Chat;
 import resnyx.messenger.general.User;
 import resnyx.util.UnixTimeDeserializer;
+import tools.jackson.databind.annotation.JsonDeserialize;
+
+import java.time.LocalDateTime;
 
 /**
  * Represents a join request sent to a chat.

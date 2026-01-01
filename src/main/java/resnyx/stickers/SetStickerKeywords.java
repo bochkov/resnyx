@@ -1,11 +1,11 @@
 package resnyx.stickers;
 
-import java.util.List;
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import resnyx.TgMethod;
+
+import java.util.List;
 
 /**
  * Use this method to change search keywords assigned to a regular or custom emoji sticker.

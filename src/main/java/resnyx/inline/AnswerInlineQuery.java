@@ -1,12 +1,12 @@
 package resnyx.inline;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import resnyx.TgMethod;
+
+import java.util.List;
 
 /**
  * Use this method to send answers to an inline query. On success, True is returned.

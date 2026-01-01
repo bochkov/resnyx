@@ -1,9 +1,9 @@
 package resnyx.passport;
 
-import java.util.List;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /**
  * Describes Telegram Passport data shared with the bot by the user.

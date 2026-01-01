@@ -1,11 +1,11 @@
 package resnyx.messenger.general;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.messenger.business.BusinessBotRights;
 import resnyx.util.UnixTimeSerializer;
+import tools.jackson.databind.annotation.JsonSerialize;
 
 import java.time.LocalDateTime;
 

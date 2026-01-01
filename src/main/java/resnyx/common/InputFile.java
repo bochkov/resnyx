@@ -1,8 +1,8 @@
 package resnyx.common;
 
-import java.io.File;
-
 import com.fasterxml.jackson.annotation.JsonValue;
+
+import java.io.File;
 
 public final class InputFile {
 

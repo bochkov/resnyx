@@ -1,9 +1,9 @@
 package resnyx.messenger.chat;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.util.ColorRGBDeserializer;
+import tools.jackson.databind.annotation.JsonDeserialize;
 
 import java.awt.*;
 

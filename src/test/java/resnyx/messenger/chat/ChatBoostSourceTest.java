@@ -1,15 +1,16 @@
 package resnyx.messenger.chat;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.json.JsonMapper;
 
 class ChatBoostSourceTest {
 
-    ObjectMapper om = new ObjectMapper();
+    JsonMapper mapper = JsonMapper.builder()
+            .build();
 
     @Test
-    void testPremium() throws Exception {
+    void testPremium() {
         String json = """
                 {
                     "source" : "premium",
@@ -19,7 +20,7 @@ class ChatBoostSourceTest {
                     }
                 }
                 """;
-        ChatBoostSourcePremium value = (ChatBoostSourcePremium) om.readValue(json.getBytes(), ChatBoostSource.class);
+        ChatBoostSourcePremium value = (ChatBoostSourcePremium) mapper.readValue(json.getBytes(), ChatBoostSource.class);
         Assertions.assertThat(value.getUser().getFirstName()).isEqualTo("Vasya");
     }
 

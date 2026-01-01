@@ -1,10 +1,10 @@
 package resnyx.messenger.general;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import resnyx.updates.Update;
+import tools.jackson.databind.json.JsonMapper;
 
 @Slf4j
 class MaybeInaccessibleMessageTest {
@@ -20,11 +20,12 @@ class MaybeInaccessibleMessageTest {
             }
             """;
 
-    ObjectMapper om = new ObjectMapper();
+    JsonMapper mapper = JsonMapper.builder()
+            .build();
 
     @Test
-    void testDeserialize() throws Exception {
-        Update upd = om.readValue(json.getBytes(), Update.class);
+    void testDeserialize() {
+        Update upd = mapper.readValue(json.getBytes(), Update.class);
         Assertions.assertThat(upd.getUpdateId()).isEqualTo(112312L);
         Assertions.assertThat(upd.getMessage()).isOfAnyClassIn(Message.class);
     }

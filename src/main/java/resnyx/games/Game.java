@@ -1,13 +1,13 @@
 package resnyx.games;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.messenger.general.Animation;
 import resnyx.messenger.general.MessageEntity;
 import resnyx.messenger.general.PhotoSize;
+
+import java.util.List;
 
 /**
  * This object represents a game.

@@ -1,10 +1,10 @@
 package resnyx.messenger.keyboard;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /**
  * This object represents a custom keyboard with reply options (see Introduction to bots for details and examples).

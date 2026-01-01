@@ -2,7 +2,6 @@ package resnyx.messenger.chat;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import resnyx.messenger.general.Chat;
 import resnyx.messenger.general.User;
 
 /**

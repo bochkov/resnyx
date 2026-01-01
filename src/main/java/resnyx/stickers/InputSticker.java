@@ -1,11 +1,11 @@
 package resnyx.stickers;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.common.InputFile;
+
+import java.util.List;
 
 /**
  * This object describes a sticker to be added to a sticker set.

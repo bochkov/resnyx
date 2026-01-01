@@ -1,12 +1,12 @@
 package resnyx.messenger.topic;
 
-import java.awt.*;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.util.ColorRGBDeserializer;
+import tools.jackson.databind.annotation.JsonDeserialize;
+
+import java.awt.*;
 
 /**
  * This object represents a forum topic.

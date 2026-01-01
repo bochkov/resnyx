@@ -1,12 +1,12 @@
 package resnyx.payments;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import resnyx.TgMethod;
+
+import java.util.List;
 
 /**
  * If you sent an invoice requesting a shipping address and the parameter is_flexible was specified,

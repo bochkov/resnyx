@@ -1,15 +1,15 @@
 package resnyx.util;
 
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+
 import java.awt.*;
-import java.io.IOException;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-
-public final class ColorRGBSerializer extends JsonSerializer<Color> {
+public final class ColorRGBSerializer extends ValueSerializer<Color> {
     @Override
-    public void serialize(Color value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+    public void serialize(Color value, JsonGenerator gen, SerializationContext ctx) throws JacksonException {
         int sValue = (value.getRed() << 16) | (value.getGreen() << 8) | value.getBlue();
         gen.writeNumber(sValue);
     }

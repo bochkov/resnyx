@@ -1,12 +1,12 @@
 package resnyx.passport;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import resnyx.TgMethod;
+
+import java.util.List;
 
 /**
  * Informs a user that some of the Telegram Passport elements they provided contains errors.

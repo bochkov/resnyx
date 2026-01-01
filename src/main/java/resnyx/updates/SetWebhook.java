@@ -1,13 +1,13 @@
 package resnyx.updates;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import resnyx.TgMethod;
 import resnyx.common.InputFile;
+
+import java.util.List;
 
 /**
  * Use this method to specify a URL and receive incoming updates via an outgoing webhook.

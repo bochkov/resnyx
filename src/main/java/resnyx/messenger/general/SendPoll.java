@@ -2,7 +2,6 @@ package resnyx.messenger.general;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -10,6 +9,7 @@ import resnyx.TgMethod;
 import resnyx.common.ParseMode;
 import resnyx.common.SendOptions;
 import resnyx.util.UnixTimeSerializer;
+import tools.jackson.databind.annotation.JsonSerialize;
 
 import java.time.LocalDateTime;
 import java.util.List;

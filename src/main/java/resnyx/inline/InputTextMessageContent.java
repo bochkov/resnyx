@@ -1,13 +1,13 @@
 package resnyx.inline;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.common.ParseMode;
 import resnyx.messenger.general.LinkPreviewOptions;
 import resnyx.messenger.general.MessageEntity;
+
+import java.util.List;
 
 /**
  * Represents the content of a text message to be sent as the result of an inline query.

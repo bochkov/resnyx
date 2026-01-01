@@ -1,10 +1,10 @@
 package resnyx.messenger.videochat;
 
-import java.util.List;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.messenger.general.User;
+
+import java.util.List;
 
 /**
  * This object represents a service message about new members invited to a video chat.

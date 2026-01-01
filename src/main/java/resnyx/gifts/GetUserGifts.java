@@ -1,39 +1,24 @@
-package resnyx.messenger.business;
+package resnyx.gifts;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import resnyx.TgMethod;
-import resnyx.gifts.OwnedGifts;
 
 /**
- * Returns the gifts received and owned by a managed business account.
- * Requires the <i>can_view_gifts_and_stars</i> business bot right.
- * Returns {@link OwnedGifts} on success.
+ * Returns the gifts owned and hosted by a user. Returns {@link OwnedGifts} on success.
  */
 @Getter
 @Setter
 @RequiredArgsConstructor
-public final class GetBusinessAccountGifts implements TgMethod {
+public final class GetUserGifts implements TgMethod {
 
     /**
-     * Unique identifier of the business connection on behalf of which to read the message
+     * Unique identifier of the user
      */
-    @JsonProperty("business_connection_id")
-    private final String businessConnectionId;
-
-    /**
-     * Pass True to exclude gifts that aren't saved to the account's profile page
-     */
-    @JsonProperty("exclude_unsaved")
-    private Boolean excludeUnsaved;
-
-    /**
-     * Pass True to exclude gifts that are saved to the account's profile page
-     */
-    @JsonProperty("exclude_saved")
-    private Boolean excludeSaved;
+    @JsonProperty("user_id")
+    private final Long userId;
 
     /**
      * Pass True to exclude gifts that can be purchased an unlimited number of times
@@ -54,16 +39,16 @@ public final class GetBusinessAccountGifts implements TgMethod {
     private Boolean excludeLimitedNonUpgradable;
 
     /**
-     * Pass True to exclude unique gifts
-     */
-    @JsonProperty("exclude_unique")
-    private Boolean excludeUnique;
-
-    /**
      * Pass True to exclude gifts that were assigned from the TON blockchain and can't be resold or transferred in Telegram
      */
     @JsonProperty("exclude_from_blockchain")
     private Boolean excludeFromBlockchain;
+
+    /**
+     * Pass True to exclude unique gifts
+     */
+    @JsonProperty("exclude_unique")
+    private Boolean excludeUnique;
 
     /**
      * Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
@@ -73,7 +58,7 @@ public final class GetBusinessAccountGifts implements TgMethod {
 
     /**
      * Offset of the first entry to return as received from the previous request;
-     * use empty string to get the first chunk of results
+     * use an empty string to get the first chunk of results
      */
     private String offset;
 

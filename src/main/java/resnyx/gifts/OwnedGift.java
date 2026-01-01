@@ -1,4 +1,4 @@
-package resnyx.messenger.general;
+package resnyx.gifts;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

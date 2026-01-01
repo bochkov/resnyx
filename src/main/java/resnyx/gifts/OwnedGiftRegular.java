@@ -1,9 +1,10 @@
-package resnyx.messenger.general;
+package resnyx.gifts;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import resnyx.stickers.Gift;
+import resnyx.messenger.general.MessageEntity;
+import resnyx.messenger.general.User;
 import resnyx.util.UnixTimeDeserializer;
 import tools.jackson.databind.annotation.JsonDeserialize;
 
@@ -92,4 +93,16 @@ public final class OwnedGiftRegular implements OwnedGift {
      */
     @JsonProperty("prepaid_upgrade_star_count")
     private Integer prepaidUpgradeStarCount;
+
+    /**
+     * Optional. True, if the gift's upgrade was purchased after the gift was sent; for gifts received on behalf of business accounts only
+     */
+    @JsonProperty("is_upgrade_separate")
+    private Boolean isUpgradeSeparate;
+
+    /**
+     * Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift
+     */
+    @JsonProperty("unique_gift_number")
+    private Integer uniqueGiftNumber;
 }

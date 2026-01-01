@@ -1,4 +1,4 @@
-package resnyx.messenger.business;
+package resnyx.gifts;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -7,14 +7,14 @@ import lombok.Setter;
 import resnyx.TgMethod;
 
 /**
- * Deletes a story previously posted by the bot on behalf of a managed business account.
- * Requires the <i>can_manage_stories</i> business bot right.
+ * Converts a given regular gift to Telegram Stars.
+ * Requires the <i>can_convert_gifts_to_stars</i> business bot right.
  * Returns True on success.
  */
 @Getter
 @Setter
 @RequiredArgsConstructor
-public final class DeleteStory implements TgMethod {
+public final class ConvertGiftToStars implements TgMethod {
 
     /**
      * Unique identifier of the business connection on behalf of which to read the message
@@ -23,9 +23,8 @@ public final class DeleteStory implements TgMethod {
     private final String businessConnectionId;
 
     /**
-     * Unique identifier of the story to edit
+     * Unique identifier of the regular gift that should be converted to Telegram Stars
      */
-    @JsonProperty("story_id")
-    private String storyId;
-
+    @JsonProperty("owned_gift_id")
+    private final String ownedGiftId;
 }

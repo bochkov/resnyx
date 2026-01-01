@@ -32,4 +32,11 @@ public final class ForumTopicCreated {
      */
     @JsonProperty("icon_custom_emoji_id")
     private String iconCustomEmojiId;
+
+    /**
+     * Optional. True, if the name of the topic wasn't specified explicitly by its creator
+     * and likely needs to be changed by the bot
+     */
+    @JsonProperty("is_name_implicit")
+    private Boolean isNameImplicit;
 }

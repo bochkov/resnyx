@@ -1,9 +1,9 @@
-package resnyx.messenger.general;
+package resnyx.gifts;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import resnyx.stickers.Gift;
+import resnyx.messenger.general.User;
 import resnyx.util.UnixTimeDeserializer;
 import tools.jackson.databind.annotation.JsonDeserialize;
 

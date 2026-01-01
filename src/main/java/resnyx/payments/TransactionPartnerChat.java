@@ -2,8 +2,8 @@ package resnyx.payments;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import resnyx.gifts.Gift;
 import resnyx.messenger.general.Chat;
-import resnyx.stickers.Gift;
 
 /**
  * Describes a transaction with a chat.

@@ -1,4 +1,4 @@
-package resnyx.messenger.general;
+package resnyx.gifts;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -21,17 +21,27 @@ public final class UniqueGiftInfo {
     private UniqueGift gift;
 
     /**
-     * Origin of the gift. Currently, either "upgrade" for gifts upgraded from regular gifts,
-     * "transfer" for gifts transferred from other users or channels,
-     * or "resale" for gifts bought from other users
+     * Origin of the gift.
+     * Currently, either “upgrade” for gifts upgraded from regular gifts,
+     * “transfer” for gifts transferred from other users or channels,
+     * “resale” for gifts bought from other users,
+     * “gifted_upgrade” for upgrades purchased after the gift was sent,
+     * or “offer” for gifts bought or sold through gift purchase offers
      */
     private String origin;
 
     /**
-     * Optional. For gifts bought from other users, the price paid for the gift
+     * Optional. For gifts bought from other users, the currency in which the payment for the gift was done.
+     * Currently, one of “XTR” for Telegram Stars or “TON” for toncoins.
      */
-    @JsonProperty("last_resale_star_count")
-    private Integer lastResaleStarCount;
+    @JsonProperty("last_resale_currency")
+    private String lastResaleCurrency;
+
+    /**
+     * Optional. For gifts bought from other users, the price paid for the gift in either Telegram Stars or nanotoncoins
+     */
+    @JsonProperty("last_resale_amount")
+    private Integer lastResaleAmount;
 
     /**
      * Optional. Unique identifier of the received gift for the bot; only present for gifts received on behalf of business accounts

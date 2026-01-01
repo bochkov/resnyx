@@ -3,6 +3,8 @@ package resnyx.messenger.general;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import resnyx.gifts.AcceptedGiftTypes;
+import resnyx.gifts.UniqueGiftColors;
 import resnyx.messenger.chat.ChatLocation;
 import resnyx.messenger.chat.ChatPermissions;
 import resnyx.messenger.chat.ChatPhoto;
@@ -311,4 +313,21 @@ public final class ChatFullInfo {
      * Optional. For supergroups, the location to which the supergroup is connected. Returned only in getChat.
      */
     private ChatLocation location;
+
+    /**
+     * Optional. For private chats, the rating of the user if any
+     */
+    private UserRating rating;
+
+    /**
+     * Optional. The color scheme based on a unique gift that must be used for the chat's name, message replies and link previews
+     */
+    @JsonProperty("unique_gift_colors")
+    private UniqueGiftColors color;
+
+    /**
+     * Optional. The number of Telegram Stars a general user have to pay to send a message to the chat
+     */
+    @JsonProperty("paid_message_star_count")
+    private Integer paidMessageStarCount;
 }

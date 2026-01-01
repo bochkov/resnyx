@@ -1,4 +1,4 @@
-package resnyx.messenger.general;
+package resnyx.gifts;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -34,4 +34,10 @@ public final class AcceptedGiftTypes {
      */
     @JsonProperty("premium_subscription")
     private Boolean premiumSubscription;
+
+    /**
+     * True, if transfers of unique gifts from channels are accepted
+     */
+    @JsonProperty("gifts_from_channels")
+    private Boolean giftsFromChannels;
 }

@@ -1,4 +1,4 @@
-package resnyx.messenger.business;
+package resnyx.gifts;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import resnyx.TgMethod;
-import resnyx.messenger.general.AcceptedGiftTypes;
+import resnyx.gifts.AcceptedGiftTypes;
 
 /**
  * Changes the privacy settings pertaining to incoming gifts in a managed business account.

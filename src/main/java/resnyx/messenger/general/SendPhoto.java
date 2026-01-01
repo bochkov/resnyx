@@ -28,6 +28,13 @@ public final class SendPhoto implements TgMethod {
     private final String chatId;
 
     /**
+     * Unique identifier for the target message thread (topic) of a forum;
+     * for forum supergroups and private chats of bots with forum topic mode enabled only
+     */
+    @JsonProperty("message_thread_id")
+    private Long messageThreadId;
+
+    /**
      * Identifier of the direct messages topic to which the message will be sent;
      * required if the message is sent to a direct messages chat
      */

@@ -36,7 +36,8 @@ public final class SendChatAction implements TgMethod {
     private final String chatId;
 
     /**
-     * Unique identifier for the target message thread; supergroups only
+     * Unique identifier for the target message thread or topic of a forum;
+     * for supergroups and private chats of bots with forum topic mode enabled only
      */
     @JsonProperty("message_thread_id")
     private Long messageThreadId;

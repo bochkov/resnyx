@@ -1,4 +1,4 @@
-package resnyx.stickers;
+package resnyx.gifts;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

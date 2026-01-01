@@ -85,4 +85,11 @@ public final class User {
      */
     @JsonProperty("has_main_web_app")
     private Boolean hasMainWebApp;
+
+    /**
+     * Optional. True, if the bot has forum topic mode enabled in private chats.
+     * Returned only in {@link GetMe}.
+     */
+    @JsonProperty("has_topic_enabled")
+    private Boolean hasTopicEnabled;
 }

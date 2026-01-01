@@ -3,9 +3,9 @@ package resnyx.payments;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import resnyx.gifts.Gift;
 import resnyx.messenger.general.PaidMedia;
 import resnyx.messenger.general.User;
-import resnyx.stickers.Gift;
 
 import java.util.List;
 

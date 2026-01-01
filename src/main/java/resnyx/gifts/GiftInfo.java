@@ -1,9 +1,9 @@
-package resnyx.messenger.general;
+package resnyx.gifts;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import resnyx.gifts.Gift;
+import resnyx.messenger.general.MessageEntity;
 
 import java.util.List;
 
@@ -32,6 +32,18 @@ public final class GiftInfo {
     private Integer convertStarCount;
 
     /**
+     * Optional. Number of Telegram Stars that were prepaid for the ability to upgrade the gift
+     */
+    @JsonProperty("prepaid_upgrade_star_count")
+    private Integer prepaidUpgradeStarCount;
+
+    /**
+     * Optional. True, if the gift's upgrade was purchased after the gift was sent
+     */
+    @JsonProperty("is_upgrade_separate")
+    private Boolean isUpgradeSeparate;
+
+    /**
      * Optional. True, if the gift can be upgraded to a unique gift
      */
     @JsonProperty("can_be_upgraded")
@@ -52,4 +64,10 @@ public final class GiftInfo {
      */
     @JsonProperty("is_private")
     private Boolean isPrivate;
+
+    /**
+     * Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift
+     */
+    @JsonProperty("unique_gift_number")
+    private Integer uniqueGiftNumber;
 }

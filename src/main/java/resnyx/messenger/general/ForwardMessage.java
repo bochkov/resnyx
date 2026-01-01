@@ -23,7 +23,8 @@ public final class ForwardMessage implements TgMethod {
     private final String chatId;
 
     /**
-     * Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+     * Unique identifier for the target message thread (topic) of a forum;
+     * for forum supergroups and private chats of bots with forum topic mode enabled only
      */
     @JsonProperty("message_thread_id")
     private Long messageThreadId;
@@ -58,6 +59,13 @@ public final class ForwardMessage implements TgMethod {
      */
     @JsonProperty("protect_content")
     private Boolean protectContent;
+
+    /**
+     * Unique identifier of the message effect to be added to the message;
+     * only available when forwarding to private chats
+     */
+    @JsonProperty("message_effect_id")
+    private String messageEffectId;
 
     /**
      * A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only.

@@ -35,6 +35,13 @@ public final class SendPoll implements TgMethod {
     private final String chatId;
 
     /**
+     * Unique identifier for the target message thread (topic) of a forum;
+     * for forum supergroups and private chats of bots with forum topic mode enabled only
+     */
+    @JsonProperty("message_thread_id")
+    private Long messageThreadId;
+
+    /**
      * Poll question, 1-300 characters
      */
     private final String question;

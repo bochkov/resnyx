@@ -18,8 +18,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public final class SendInvoice implements TgMethod {
 
+    /**
+     * Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     */
     @JsonProperty("chat_id")
     private final String chatId;
+
+    /**
+     * Unique identifier for the target message thread (topic) of a forum;
+     * for forum supergroups and private chats of bots with forum topic mode enabled only
+     */
+    @JsonProperty("message_thread_id")
+    private Long messageThreadId;
 
     /**
      * Identifier of the direct messages topic to which the message will be sent;

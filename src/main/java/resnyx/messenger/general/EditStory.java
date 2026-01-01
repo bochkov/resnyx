@@ -1,4 +1,4 @@
-package resnyx.messenger.business;
+package resnyx.messenger.general;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -6,9 +6,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import resnyx.TgMethod;
 import resnyx.common.ParseMode;
-import resnyx.messenger.general.InputStoryContent;
-import resnyx.messenger.general.MessageEntity;
-import resnyx.messenger.general.StoryArea;
 
 import java.util.List;
 

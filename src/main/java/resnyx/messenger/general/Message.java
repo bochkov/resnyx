@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.games.Game;
+import resnyx.gifts.UniqueGiftInfo;
 import resnyx.messenger.chat.ChatBackground;
 import resnyx.messenger.keyboard.InlineKeyboardMarkup;
 import resnyx.messenger.topic.*;
@@ -30,13 +31,17 @@ import java.util.List;
 public final class Message implements MaybeInaccessibleMessage {
 
     /**
-     * Unique message identifier inside this chat
+     * Unique message identifier inside this chat.
+     * In specific instances (e.g., message containing a video sent to a big chat),
+     * the server might automatically schedule a message instead of sending it immediately.
+     * In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent
      */
     @JsonProperty("message_id")
     private Long messageId;
 
     /**
-     * Optional. Unique identifier of a message thread to which the message belongs; for supergroups only
+     * Optional. Unique identifier of a message thread or forum topic to which the message belongs;
+     * for supergroups and private chats only
      */
     @JsonProperty("message_thread_id")
     private Long messageThreadId;
@@ -100,7 +105,7 @@ public final class Message implements MaybeInaccessibleMessage {
     private MessageOrigin forwardOrigin;
 
     /**
-     * Optional. True, if the message is sent to a forum topic
+     * Optional. True, if the message is sent to a topic in a forum supergroup or a private chat with the bot
      */
     @JsonProperty("is_topic_message")
     private Boolean isTopicMessage;
@@ -446,6 +451,12 @@ public final class Message implements MaybeInaccessibleMessage {
      */
     @JsonProperty("unique_gift")
     private UniqueGiftInfo uniqueGift;
+
+    /**
+     * Optional. Service message: upgrade of a gift was purchased after the gift was sent
+     */
+    @JsonProperty("gift_upgrade_sent")
+    private GiftInfo giftUpgradeSent;
 
     /**
      * Optional. The domain name of the website on which the user has logged in

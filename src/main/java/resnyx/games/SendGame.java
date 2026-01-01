@@ -30,6 +30,13 @@ public final class SendGame implements TgMethod {
     private final Long chatId;
 
     /**
+     * Unique identifier for the target message thread (topic) of a forum;
+     * for forum supergroups and private chats of bots with forum topic mode enabled only
+     */
+    @JsonProperty("message_thread_id")
+    private String messageThreadId;
+
+    /**
      * Short name of the game, serves as the unique identifier for the game.
      * Set up your games via @BotFather.
      */

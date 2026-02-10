@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import resnyx.games.Game;
 import resnyx.gifts.UniqueGiftInfo;
 import resnyx.messenger.chat.ChatBackground;
+import resnyx.messenger.chat.ChatOwnerChanged;
+import resnyx.messenger.chat.ChatOwnerLeft;
 import resnyx.messenger.keyboard.InlineKeyboardMarkup;
 import resnyx.messenger.topic.*;
 import resnyx.messenger.videochat.VideoChatEnded;
@@ -342,6 +344,18 @@ public final class Message implements MaybeInaccessibleMessage {
      */
     @JsonProperty("left_chat_members")
     private List<User> leftChatMembers;
+
+    /**
+     * Optional. Service message: chat owner has left
+     */
+    @JsonProperty("chat_owner_left")
+    private ChatOwnerLeft chatOwnerLeft;
+
+    /**
+     * Optional. Service message: chat owner has changed
+     */
+    @JsonProperty("chat_owner_changed")
+    private ChatOwnerChanged chatOwnerChanged;
 
     /**
      * Optional. A chat title was changed to this value

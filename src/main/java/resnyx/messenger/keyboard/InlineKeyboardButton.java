@@ -7,7 +7,9 @@ import resnyx.common.WebAppInfo;
 import resnyx.games.CallbackGame;
 
 /**
- * This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
+ * This object represents one button of an inline keyboard.
+ * Exactly one of the fields other than text, icon_custom_emoji_id, and style
+ * must be used to specify the type of the button.
  */
 @Data
 @NoArgsConstructor
@@ -17,6 +19,21 @@ public final class InlineKeyboardButton {
      * Label text on the button
      */
     private String text;
+
+    /**
+     * Optional. Unique identifier of the custom emoji shown before the text of the button.
+     * Can only be used by bots that purchased additional usernames on <a href="https://fragment.com/">Fragment</a>
+     * or in the messages directly sent by the bot to private, group and supergroup chats
+     * if the owner of the bot has a Telegram Premium subscription.
+     */
+    @JsonProperty("icon_custom_emoji_id")
+    private String iconCustomEmojiId;
+
+    /**
+     * Optional. Style of the button. Must be one of “danger” (red), “success” (green) or “primary” (blue).
+     * If omitted, then an app-specific style is used.
+     */
+    private String style;
 
     /**
      * Optional. HTTP or tg:// URL to be opened when the button is pressed.

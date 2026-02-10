@@ -50,6 +50,12 @@ public final class Video {
     private Integer startTimestamp;
 
     /**
+     * Optional. List of available qualities of the video
+     */
+    @JsonProperty
+    private List<VideoQuality> qualities;
+
+    /**
      * Optional. Original filename as defined by sender
      */
     @JsonProperty("file_name")

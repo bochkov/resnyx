@@ -92,4 +92,10 @@ public final class User {
      */
     @JsonProperty("has_topic_enabled")
     private Boolean hasTopicEnabled;
+
+    /**
+     * Optional. True, if the bot allows users to create and delete topics in private chats. Returned only in getMe.
+     */
+    @JsonProperty("allows_users_to_create_topics")
+    private Boolean allowUsersToCreateTopics;
 }

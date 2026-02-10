@@ -27,4 +27,10 @@ public final class UniqueGiftModel {
      */
     @JsonProperty("rarity_per_mille")
     private Integer rarityPerMille;
+
+    /**
+     * Optional. Rarity of the model if it is a crafted model.
+     * Currently, can be “uncommon”, “rare”, “epic”, or “legendary”.
+     */
+    private String rarity;
 }

@@ -320,6 +320,12 @@ public final class ChatFullInfo {
     private UserRating rating;
 
     /**
+     * Optional. For private chats, the first audio added to the profile of the user
+     */
+    @JsonProperty("first_profile_audio")
+    private Audio firstProfileAudio;
+
+    /**
      * Optional. The color scheme based on a unique gift that must be used for the chat's name, message replies and link previews
      */
     @JsonProperty("unique_gift_colors")

@@ -83,6 +83,12 @@ public final class Message implements MaybeInaccessibleMessage {
     private User senderBusinessBot;
 
     /**
+     * Optional. Tag or custom title of the sender of the message; for supergroups only
+     */
+    @JsonProperty("sender_tag")
+    private String senderTag;
+
+    /**
      * Date the message was sent in Unix time
      */
     @JsonDeserialize(using = UnixTimeDeserializer.class)

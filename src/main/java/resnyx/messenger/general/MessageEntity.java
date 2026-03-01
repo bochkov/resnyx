@@ -3,6 +3,10 @@ package resnyx.messenger.general;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import resnyx.util.UnixTimeDeserializer;
+import tools.jackson.databind.annotation.JsonDeserialize;
+
+import java.time.LocalDateTime;
 
 /**
  * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
@@ -32,6 +36,7 @@ public final class MessageEntity {
      * “text_link” (for clickable text URLs),
      * “text_mention” (for users without usernames),
      * “custom_emoji” (for inline custom emoji stickers)
+     * “date_time” (for formatted date and time)
      */
     private MessageEntityType type;
 
@@ -66,4 +71,18 @@ public final class MessageEntity {
      */
     @JsonProperty("custom_emoji_id")
     private String customEmojiId;
+
+    /**
+     * Optional. For “date_time” only, the Unix time associated with the entity
+     */
+    @JsonProperty("unix_time")
+    @JsonDeserialize(using = UnixTimeDeserializer.class)
+    private LocalDateTime unixTime;
+
+    /**
+     * Optional. For “date_time” only, the string that defines the formatting of the date and time.
+     * See date-time entity formatting for more details.
+     */
+    @JsonProperty("date_time_format")
+    private String dateTimeFormat;
 }

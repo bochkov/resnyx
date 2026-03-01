@@ -22,6 +22,11 @@ public final class ChatMemberMember implements ChatMember {
     private String status;
 
     /**
+     * Optional. Tag of the member
+     */
+    private String tag;
+
+    /**
      * Information about the user
      */
     private User user;

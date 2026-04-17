@@ -36,7 +36,8 @@ public final class ReplyParameters {
 
     /**
      * Optional. Quoted part of the message to be replied to; 0-1024 characters after entities parsing.
-     * The quote must be an exact substring of the message to be replied to, including bold, italic, underline, strikethrough, spoiler, and custom_emoji entities.
+     * The quote must be an exact substring of the message to be replied to, including bold, italic, underline,
+     * strikethrough, spoiler, custom_emoji, and date_time entities.
      * The message will fail to send if the quote isn't found in the original message.
      */
     private String quote;
@@ -65,4 +66,10 @@ public final class ReplyParameters {
      */
     @JsonProperty("checklist_task_id")
     private Integer checklistTaskId;
+
+    /**
+     * Optional. Persistent identifier of the specific poll option to be replied to
+     */
+    @JsonProperty("poll_option_id")
+    private String pollOptionId;
 }

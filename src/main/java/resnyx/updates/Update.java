@@ -178,4 +178,10 @@ public final class Update {
     @JsonProperty("removed_chat_boost")
     private ChatBoostRemoved removedChatBoost;
 
+    /**
+     * Optional. A new bot was created to be managed by the bot, or token or owner of a managed bot was changed
+     */
+    @JsonProperty("managed_bot")
+    private ManagedBotUpdated managedBot;
+
 }

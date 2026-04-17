@@ -69,11 +69,18 @@ public final class Poll {
     private Boolean allowsMultipleAnswers;
 
     /**
-     * Optional. 0-based identifier of the correct answer option.
-     * Available only for polls in the quiz mode, which are closed, or was sent (not forwarded) by the bot or to the private chat with the bot.
+     * True, if the poll allows to change the chosen answer options
      */
-    @JsonProperty("correct_option_id")
-    private Integer correctOptionId;
+    @JsonProperty("allows_revoting")
+    private Boolean allowsRevoting;
+
+    /**
+     * Optional. Array of 0-based identifiers of the correct answer options.
+     * Available only for polls in quiz mode which are closed or were sent (not forwarded)
+     * by the bot or to the private chat with the bot.
+     */
+    @JsonProperty("correct_option_ids")
+    private List<Integer> correctOptionIds;
 
     /**
      * Optional. Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll, 0-200 characters
@@ -98,4 +105,15 @@ public final class Poll {
     @JsonDeserialize(using = UnixTimeDeserializer.class)
     @JsonProperty("close_date")
     private LocalDateTime closeDate;
+
+    /**
+     * Optional. Description of the poll; for polls inside the Message object only
+     */
+    private String description;
+
+    /**
+     * Optional. Special entities like usernames, URLs, bot commands, etc. that appear in the description
+     */
+    @JsonProperty("description_entities")
+    private List<MessageEntity> descriptionEntities;
 }

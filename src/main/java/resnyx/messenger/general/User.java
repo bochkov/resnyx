@@ -98,4 +98,10 @@ public final class User {
      */
     @JsonProperty("allows_users_to_create_topics")
     private Boolean allowUsersToCreateTopics;
+
+    /**
+     * Optional. True, if other bots can be created to be controlled by the bot. Returned only in getMe.
+     */
+    @JsonProperty("can_manage_bots")
+    private Boolean canManageBots;
 }

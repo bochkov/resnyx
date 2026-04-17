@@ -32,4 +32,10 @@ public final class PollAnswer {
      */
     @JsonProperty("option_ids")
     private List<Integer> optionIds;
+
+    /**
+     * Persistent identifiers of the chosen answer options. May be empty if the vote was retracted.
+     */
+    @JsonProperty("option_persistent_ids")
+    private List<Integer> optionPersistentIds;
 }

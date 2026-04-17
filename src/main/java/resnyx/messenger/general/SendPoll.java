@@ -80,14 +80,41 @@ public final class SendPoll implements TgMethod {
     /**
      * True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to False
      */
-    @JsonProperty("allow_multiple_answers")
-    private Boolean allowMultipleAnswers;
+    @JsonProperty("allows_multiple_answers")
+    private Boolean allowsMultipleAnswers;
 
     /**
-     * 0-based identifier of the correct answer option, required for polls in quiz mode
+     * Pass True, if the poll allows to change chosen answer options,
+     * defaults to False for quizzes and to True for regular polls
      */
-    @JsonProperty("correct_option_id")
-    private Integer correctOptionId;
+    @JsonProperty("allows_revoting")
+    private Boolean allowsRevoting;
+
+    /**
+     * Pass True, if the poll options must be shown in random order
+     */
+    @JsonProperty("shuffle_options")
+    private Boolean shuffleOptions;
+
+    /**
+     * Pass True, if answer options can be added to the poll after creation;
+     * not supported for anonymous polls and quizzes
+     */
+    @JsonProperty("allow_adding_options")
+    private Boolean allowAddingOptions;
+
+    /**
+     * Pass True, if poll results must be shown only after the poll closes
+     */
+    @JsonProperty("hide_results_until_closes")
+    private Boolean hideResultsUntilCloses;
+
+    /**
+     * A JSON-serialized list of monotonically increasing 0-based identifiers of the correct answer options,
+     * required for polls in quiz mode
+     */
+    @JsonProperty("correct_option_ids")
+    private List<Integer> correctOptionIds;
 
     /**
      * Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll,
@@ -127,6 +154,24 @@ public final class SendPoll implements TgMethod {
      */
     @JsonProperty("is_closed")
     private Boolean isClosed;
+
+    /**
+     * Description of the poll to be sent, 0-1024 characters after entities parsing
+     */
+    private String description;
+
+    /**
+     * Mode for parsing entities in the poll description. See formatting options for more details.
+     */
+    @JsonProperty("description_parse_mode")
+    private ParseMode descriptionParseMode;
+
+    /**
+     * A JSON-serialized list of special entities that appear in the poll description,
+     * which can be specified instead of description_parse_mode
+     */
+    @JsonProperty("description_entities")
+    private List<MessageEntity> descriptionEntities;
 
     @JsonUnwrapped
     private SendOptions sendOptions;

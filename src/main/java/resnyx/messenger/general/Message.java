@@ -155,6 +155,12 @@ public final class Message implements MaybeInaccessibleMessage {
     private Integer replyToChecklistTaskId;
 
     /**
+     * Optional. Persistent identifier of the specific poll option that is being replied to
+     */
+    @JsonProperty("reply_to_poll_option_id")
+    private String replyToPollOptionId;
+
+    /**
      * Optional. Bot through which the message was sent
      */
     @JsonProperty("via_bot")
@@ -592,10 +598,28 @@ public final class Message implements MaybeInaccessibleMessage {
     private GiveawayCompleted giveawayCompleted;
 
     /**
+     * Optional. Service message: user created a bot that will be managed by the current bot
+     */
+    @JsonProperty("managed_bot_created")
+    private ManagedBotCreated managedBotCreated;
+
+    /**
      * Optional. Service message: the price for paid messages has changed in the chat
      */
     @JsonProperty("paid_message_price_changed")
     private PaidMessagePriceChanged paidMessagePriceChanged;
+
+    /**
+     * Optional. Service message: answer option was added to a poll
+     */
+    @JsonProperty("poll_option_added")
+    private PollOptionAdded pollOptionAdded;
+
+    /**
+     * Optional. Service message: answer option was deleted from a poll
+     */
+    @JsonProperty("poll_option_deleted")
+    private PollOptionDeleted pollOptionDeleted;
 
     /**
      * Optional. Service message: a suggested post was approved

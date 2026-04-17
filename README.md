@@ -2,8 +2,8 @@
 
 Telegram Bot API types and methods as Java model with Jackson serialization/deserialization
 
-Bot API 9.5  
-March 1, 2026
+Bot API 9.6  
+April 3, 2026
 
 It's recommended to first read the [manual](https://core.telegram.org/bots/api).
 

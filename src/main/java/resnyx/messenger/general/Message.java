@@ -95,8 +95,18 @@ public final class Message implements MaybeInaccessibleMessage {
     private LocalDateTime date;
 
     /**
+     * Optional. The unique identifier for the guest query.
+     * Use this identifier with the method answerGuestQuery to send a response message.
+     * If non-empty, the message belongs to the chat where the guest bot was summoned,
+     * which may not coincide with other existing bot chats sharing the same identifier.
+     */
+    @JsonProperty("guest_query_id")
+    private String guestQueryId;
+
+    /**
      * Optional. Unique identifier of the business connection from which the message was received.
-     * If non-empty, the message belongs to a chat of the corresponding business account that is independent from any potential bot chat which might share the same identifier.
+     * If non-empty, the message belongs to a chat of the corresponding business account that is independent
+     * from any potential bot chat which might share the same identifier.
      */
     @JsonProperty("business_connection_id")
     private String businessConnectionId;
@@ -165,6 +175,20 @@ public final class Message implements MaybeInaccessibleMessage {
      */
     @JsonProperty("via_bot")
     private User viaBot;
+
+    /**
+     * Optional. For a message sent by a guest bot,
+     * this is the user whose original message triggered the bot's response
+     */
+    @JsonProperty("guest_bot_caller_user")
+    private User guestBotCallerUser;
+
+    /**
+     * Optional. For a message sent by a guest bot,
+     * this is the chat whose original message triggered the bot's response
+     */
+    @JsonProperty("guest_bot_caller_chat")
+    private Chat guestBotCallerChat;
 
     /**
      * Optional. Date the message was last edited in Unix time

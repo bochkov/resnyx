@@ -80,6 +80,13 @@ public final class Update {
     private BusinessMessagesDeleted deletedBusinessMessage;
 
     /**
+     * Optional. New guest message.
+     * The bot can use the field Message.guest_query_id and the method answerGuestQuery to send a message in response.
+     */
+    @JsonProperty("guest_message")
+    private Message guestMessage;
+
+    /**
      * Optional. A reaction to a message was changed by a user.
      * The bot must be an administrator in the chat and must explicitly specify "message_reaction"
      * in the list of allowed_updates to receive these updates.

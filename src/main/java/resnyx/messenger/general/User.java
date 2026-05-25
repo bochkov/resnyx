@@ -69,6 +69,12 @@ public final class User {
     private Boolean canReadAllGroupMessages;
 
     /**
+     * Optional. True, if the bot supports guest queries from chats it is not a member of. Returned only in getMe.
+     */
+    @JsonProperty("supports_guest_queries")
+    private Boolean supportsGuestQueries;
+
+    /**
      * Optional. True, if the bot supports inline queries. Returned only in getMe.
      */
     @JsonProperty("supports_inline_queries")

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.common.ParseMode;
+import resnyx.messenger.inputmedia.InputPollOptionMedia;
 
 import java.util.List;
 
@@ -33,4 +34,10 @@ public final class InputPollOption {
      */
     @JsonProperty("text_entities")
     private List<MessageEntity> entities;
+
+    /**
+     * Optional. Media added to the poll option
+     */
+    @JsonProperty("media")
+    private InputPollOptionMedia media;
 }

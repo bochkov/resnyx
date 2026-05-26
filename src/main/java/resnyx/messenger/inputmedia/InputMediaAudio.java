@@ -11,7 +11,7 @@ import resnyx.common.InputFile;
  */
 @Data
 @NoArgsConstructor
-public final class InputMediaAudio implements InputMedia {
+public final class InputMediaAudio implements InputMedia, InputPollMedia {
 
     /**
      * Type of the result, must be audio

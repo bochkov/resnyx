@@ -75,6 +75,22 @@ public final class Poll {
     private Boolean allowsRevoting;
 
     /**
+     * True if voting is limited to users who have been members of the chat
+     * where the poll was originally sent for more than 24 hours
+     */
+    @JsonProperty("members_only")
+    private Boolean membersOnly;
+
+    /**
+     * Optional. A list of two-letter <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>
+     * country codes indicating the countries from which users can vote in the poll.
+     * The country code “FT” is used for users with anonymous numbers.
+     * If omitted, then users from any country can participate in the poll.
+     */
+    @JsonProperty("country_codes")
+    private List<String> countryCodes;
+
+    /**
      * Optional. Array of 0-based identifiers of the correct answer options.
      * Available only for polls in quiz mode which are closed or were sent (not forwarded)
      * by the bot or to the private chat with the bot.
@@ -92,6 +108,12 @@ public final class Poll {
      */
     @JsonProperty("explanation_entities")
     private List<MessageEntity> explanationEntities;
+
+    /**
+     * Optional. Media added to the quiz explanation
+     */
+    @JsonProperty("explanation_media")
+    private PollMedia explanationMedia;
 
     /**
      * Optional. Amount of time in seconds the poll will be active after creation
@@ -116,4 +138,9 @@ public final class Poll {
      */
     @JsonProperty("description_entities")
     private List<MessageEntity> descriptionEntities;
+
+    /**
+     * Optional. Media added to the poll description; for polls inside the Message object only
+     */
+    private PollMedia media;
 }

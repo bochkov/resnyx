@@ -35,6 +35,11 @@ public final class PollOption {
     private List<MessageEntity> textEntities;
 
     /**
+     * Optional. Media added to the poll option
+     */
+    private PollMedia media;
+
+    /**
      * Number of users that voted for this option
      */
     @JsonProperty("voter_count")

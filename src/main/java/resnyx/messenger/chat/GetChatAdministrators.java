@@ -19,4 +19,11 @@ public final class GetChatAdministrators implements TgMethod {
      */
     @JsonProperty("chat_id")
     private final String chatId;
+
+    /**
+     * Pass True to additionally receive all bots that are administrators of the chat.
+     * By default, bots other than the current bot are omitted.
+     */
+    @JsonProperty("return_bots")
+    private Boolean returnBots;
 }

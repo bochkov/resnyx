@@ -54,6 +54,12 @@ public final class ExternalReplyInfo {
     private Document document;
 
     /**
+     * Optional. Message is a live photo, information about the live photo
+     */
+    @JsonProperty("live_photo")
+    private LivePhoto livePhoto;
+
+    /**
      * Optional. Message contains paid media; information about the paid media
      */
     @JsonProperty("paid_media")

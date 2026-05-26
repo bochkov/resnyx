@@ -8,6 +8,7 @@ import lombok.Setter;
 import resnyx.TgMethod;
 import resnyx.common.ParseMode;
 import resnyx.common.SendOptions;
+import resnyx.messenger.inputmedia.InputPollMedia;
 import resnyx.util.UnixTimeSerializer;
 import tools.jackson.databind.annotation.JsonSerialize;
 
@@ -110,6 +111,22 @@ public final class SendPoll implements TgMethod {
     private Boolean hideResultsUntilCloses;
 
     /**
+     * Pass True, if voting is limited to users who have been members of the chat
+     * where the poll is being sent for more than 24 hours; for channel chats only
+     */
+    @JsonProperty("members_only")
+    private Boolean membersOnly;
+
+    /**
+     * A JSON-serialized list of 0-12 two-letter <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>
+     * country codes indicating the countries from which users can vote in the poll; for channel chats only.
+     * Use “FT” as a country code to allow users with anonymous numbers to vote.
+     * If omitted or empty, then users from any country can participate in the poll.
+     */
+    @JsonProperty("country_codes")
+    private List<String> countryCodes;
+
+    /**
      * A JSON-serialized list of monotonically increasing 0-based identifiers of the correct answer options,
      * required for polls in quiz mode
      */
@@ -133,6 +150,12 @@ public final class SendPoll implements TgMethod {
      */
     @JsonProperty("explanation_entities")
     private List<MessageEntity> explanationEntities;
+
+    /**
+     * Media added to the quiz explanation
+     */
+    @JsonProperty("explanation_media")
+    private InputPollMedia explanationMedia;
 
     /**
      * Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with close_date.
@@ -172,6 +195,12 @@ public final class SendPoll implements TgMethod {
      */
     @JsonProperty("description_entities")
     private List<MessageEntity> descriptionEntities;
+
+    /**
+     * Media added to the poll description
+     */
+    @JsonProperty("media")
+    private InputPollMedia media;
 
     @JsonUnwrapped
     private SendOptions sendOptions;

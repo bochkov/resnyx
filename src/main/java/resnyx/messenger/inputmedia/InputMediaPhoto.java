@@ -11,7 +11,7 @@ import resnyx.common.Caption;
  */
 @Data
 @NoArgsConstructor
-public final class InputMediaPhoto implements InputMedia {
+public final class InputMediaPhoto implements InputMedia, InputPollMedia, InputPollOptionMedia {
 
     /**
      * Type of the result, must be photo

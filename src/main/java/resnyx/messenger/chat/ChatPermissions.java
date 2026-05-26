@@ -72,6 +72,12 @@ public final class ChatPermissions {
     private Boolean canAddWebPagePreviews;
 
     /**
+     * True, if the user is allowed to react to messages
+     */
+    @JsonProperty("can_react_to_messages")
+    private Boolean canReactToMessages;
+
+    /**
      * True, if the user is allowed to edit their own tag
      */
     @JsonProperty("can_edit_tag")

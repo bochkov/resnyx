@@ -12,7 +12,7 @@ import resnyx.common.InputFile;
  */
 @Data
 @NoArgsConstructor
-public final class InputMediaDocument implements InputMedia {
+public final class InputMediaDocument implements InputMedia, InputPollMedia {
 
     /**
      * Type of the result, must be document

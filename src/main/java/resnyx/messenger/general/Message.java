@@ -274,6 +274,13 @@ public final class Message implements MaybeInaccessibleMessage {
     private Document document;
 
     /**
+     * Optional. Message is a live photo, information about the live photo.
+     * For backward compatibility, when this field is set, the photo field will also be set.
+     */
+    @JsonProperty("live_photo")
+    private LivePhoto livePhoto;
+
+    /**
      * Optional. Message contains paid media; information about the paid media
      */
     @JsonProperty("paid_media")

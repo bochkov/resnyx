@@ -38,7 +38,8 @@ public final class SendMessageDraft implements TgMethod {
     private Integer draftId;
 
     /**
-     * Text of the message to be sent, 1-4096 characters after entities parsing
+     * Text of the message to be sent, 0-4096 characters after entities parsing.
+     * Pass an empty text to show a “Thinking…” placeholder.
      */
     private final String text;
 

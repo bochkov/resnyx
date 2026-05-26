@@ -12,7 +12,7 @@ import resnyx.common.InputFile;
  */
 @Data
 @NoArgsConstructor
-public final class InputMediaAnimation implements InputMedia {
+public final class InputMediaAnimation implements InputMedia, InputPollMedia, InputPollOptionMedia {
 
     /**
      * Type of the result, must be animation

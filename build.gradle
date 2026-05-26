@@ -21,7 +21,7 @@ repositories {
     mavenCentral()
     maven {
         name = "reposiliteRepositoryReleases"
-        url = "https://maven.sergeybochkov.com/releases"
+        url = "https://maven.sergeybochkov.com/maven2/releases"
     }
 }
 
@@ -53,7 +53,7 @@ tasks.named('test') {
 publishing {
     repositories {
         maven {
-            url = "https://maven.sergeybochkov.com/releases"
+            url = "https://maven.sergeybochkov.com/maven2/releases"
             credentials {
                 username = "$reposilite_user"
                 password = "$reposilite_password"

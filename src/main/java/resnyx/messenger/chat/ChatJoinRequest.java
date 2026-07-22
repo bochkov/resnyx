@@ -52,4 +52,12 @@ public final class ChatJoinRequest {
      */
     @JsonProperty("invite_link")
     private ChatInviteLink inviteLink;
+
+    /**
+     * Optional. Identifier of the join request query; for bots assigned to process join requests only.
+     * If present, then the bot must call sendChatJoinRequestWebApp
+     * or directly call answerChatJoinRequestQuery within 10 seconds.
+     */
+    @JsonProperty("query_id")
+    private String queryId;
 }

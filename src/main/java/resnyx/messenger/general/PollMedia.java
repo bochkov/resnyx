@@ -30,6 +30,11 @@ public final class PollMedia {
     private Document document;
 
     /**
+     * Optional. The HTTP link attached to the poll option
+     */
+    private Link link;
+
+    /**
      * Optional. Media is a live photo, information about the live photo
      */
     @JsonProperty("live_photo")

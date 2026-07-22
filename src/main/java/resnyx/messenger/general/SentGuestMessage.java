@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-public final class SendGuestMessage {
+public final class SentGuestMessage {
 
     /**
      * Identifier of the sent inline message

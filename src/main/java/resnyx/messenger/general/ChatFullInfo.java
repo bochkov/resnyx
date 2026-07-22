@@ -336,4 +336,11 @@ public final class ChatFullInfo {
      */
     @JsonProperty("paid_message_star_count")
     private Integer paidMessageStarCount;
+
+    /**
+     * Optional. The bot that processes join request queries in the chat.
+     * The field is only available to chat administrators.
+     */
+    @JsonProperty("guard_bot")
+    private User guardBot;
 }

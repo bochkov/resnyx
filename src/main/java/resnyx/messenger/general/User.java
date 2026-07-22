@@ -110,4 +110,10 @@ public final class User {
      */
     @JsonProperty("can_manage_bots")
     private Boolean canManageBots;
+
+    /**
+     * Optional. True, if the bot supports join request queries and can be assigned to process them. Returned only in getMe.
+     */
+    @JsonProperty("supports_join_request_queries")
+    private Boolean supportsJoinRequestQueries;
 }

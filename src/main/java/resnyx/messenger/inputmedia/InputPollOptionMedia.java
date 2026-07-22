@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type", visible = true)
 @JsonSubTypes({
         @JsonSubTypes.Type(value = InputMediaAnimation.class, name = "animation"),
+        @JsonSubTypes.Type(value = InputMediaLink.class, name = "link"),
         @JsonSubTypes.Type(value = InputMediaLivePhoto.class, name = "live_photo"),
         @JsonSubTypes.Type(value = InputMediaLocation.class, name = "location"),
         @JsonSubTypes.Type(value = InputMediaPhoto.class, name = "photo"),

@@ -18,6 +18,7 @@ import resnyx.passport.PassportData;
 import resnyx.payments.Invoice;
 import resnyx.payments.RefundedPayment;
 import resnyx.payments.SuccessfulPayment;
+import resnyx.rich.RichMessage;
 import resnyx.stickers.Sticker;
 import resnyx.util.UnixTimeDeserializer;
 import tools.jackson.databind.annotation.JsonDeserialize;
@@ -256,6 +257,12 @@ public final class Message implements MaybeInaccessibleMessage {
      */
     @JsonProperty("effect_id")
     private String effectId;
+
+    /**
+     * Optional. Message is a rich formatted message
+     */
+    @JsonProperty("rich_message")
+    private RichMessage richMessage;
 
     /**
      * Optional. Message is an animation, information about the animation.

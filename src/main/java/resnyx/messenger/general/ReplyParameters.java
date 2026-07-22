@@ -15,7 +15,9 @@ import java.util.List;
 public final class ReplyParameters {
 
     /**
-     * Identifier of the message that will be replied to in the current chat, or in the chat chat_id if it is specified
+     * Optional. Identifier of the message that will be replied to in the current chat,
+     * or in the chat chat_id if it is specified.
+     * Required if ephemeral_message_id isn't specified.
      */
     @JsonProperty("message_id")
     private Long messageId;
@@ -26,6 +28,15 @@ public final class ReplyParameters {
      */
     @JsonProperty("chat_id")
     private String chatId;
+
+    /**
+     * Optional. Identifier of the incoming ephemeral message that will be replied to in the current chat.
+     * A reply to an ephemeral message must itself be an ephemeral message.
+     * An ephemeral message may only be replied to within 15 seconds of being sent.
+     * Required if message_id isn't specified.
+     */
+    @JsonProperty("ephemeral_message_id")
+    private Long ephemeralMessageId;
 
     /**
      * Optional. Pass True if the message should be sent even if the specified message to be replied to is not found;

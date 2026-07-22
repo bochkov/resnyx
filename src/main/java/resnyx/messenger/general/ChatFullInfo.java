@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.gifts.AcceptedGiftTypes;
 import resnyx.gifts.UniqueGiftColors;
-import resnyx.messenger.chat.ChatLocation;
-import resnyx.messenger.chat.ChatPermissions;
-import resnyx.messenger.chat.ChatPhoto;
-import resnyx.messenger.chat.ReactionType;
+import resnyx.messenger.chat.*;
 import resnyx.util.UnixTimeDeserializer;
 import tools.jackson.databind.annotation.JsonDeserialize;
 
@@ -343,4 +340,9 @@ public final class ChatFullInfo {
      */
     @JsonProperty("guard_bot")
     private User guardBot;
+
+    /**
+     * Optional. The Community to which the chat belongs
+     */
+    private Community community;
 }

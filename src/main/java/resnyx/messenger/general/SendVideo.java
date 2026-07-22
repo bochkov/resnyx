@@ -47,6 +47,20 @@ public final class SendVideo implements TgMethod {
     private Integer directMessagesTopicId;
 
     /**
+     * For outgoing ephemeral messages, unique identifier of the user who will receive the message;
+     * for group and supergroup chats only. It is not guaranteed that the user will receive the message,
+     * especially if they are offline. See ephemeral message sending for more details.
+     */
+    @JsonProperty("receiver_user_id")
+    private Long receiverUserId;
+
+    /**
+     * For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+     */
+    @JsonProperty("callback_query_id")
+    private String callbackQueryId;
+
+    /**
      * Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended),
      * pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data
      */

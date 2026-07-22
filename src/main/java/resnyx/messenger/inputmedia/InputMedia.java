@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = InputMediaLivePhoto.class, name = "live_photo"),
         @JsonSubTypes.Type(value = InputMediaPhoto.class, name = "photo"),
         @JsonSubTypes.Type(value = InputMediaVideo.class, name = "video"),
+        @JsonSubTypes.Type(value = InputMediaVoiceNote.class, name = "voice_note"),
 })
 public interface InputMedia {
 }

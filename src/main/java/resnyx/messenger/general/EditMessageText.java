@@ -7,6 +7,7 @@ import lombok.Setter;
 import resnyx.TgMethod;
 import resnyx.common.ParseMode;
 import resnyx.messenger.keyboard.InlineKeyboardMarkup;
+import resnyx.messenger.rich.InputRichMessage;
 
 import java.util.List;
 
@@ -58,6 +59,13 @@ public final class EditMessageText implements TgMethod {
      */
     @JsonProperty("link_preview_options")
     private LinkPreviewOptions linkPreviewOptions;
+
+    /**
+     * New rich content of the message; required if text isn't specified.
+     * Direct upload of new files isn't supported when an inline message is edited.
+     */
+    @JsonProperty("rich_message")
+    private InputRichMessage richMessage;
 
     /**
      * A JSON-serialized object for an inline keyboard

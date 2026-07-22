@@ -1,5 +1,6 @@
 package resnyx.messenger.botcommand;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,4 +20,11 @@ public final class BotCommand {
      * Description of the command; 1-256 characters.
      */
     private String description;
+
+    /**
+     * Optional. True, if the command sends an ephemeral message,
+     * which can be seen only by the sender of the message and the bot
+     */
+    @JsonProperty("is_ephemeral")
+    private Boolean isEphemeral;
 }

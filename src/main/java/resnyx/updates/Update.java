@@ -191,4 +191,9 @@ public final class Update {
     @JsonProperty("managed_bot")
     private ManagedBotUpdated managedBot;
 
+    /**
+     * Optional. User payment subscription has changed
+     */
+    private BotSubscriptionUpdated subscription;
+
 }

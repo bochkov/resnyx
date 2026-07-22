@@ -5,10 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import resnyx.games.Game;
 import resnyx.gifts.UniqueGiftInfo;
-import resnyx.messenger.chat.ChatBackground;
-import resnyx.messenger.chat.ChatOwnerChanged;
-import resnyx.messenger.chat.ChatOwnerLeft;
+import resnyx.messenger.chat.*;
 import resnyx.messenger.keyboard.InlineKeyboardMarkup;
+import resnyx.messenger.rich.RichMessage;
 import resnyx.messenger.topic.*;
 import resnyx.messenger.videochat.VideoChatEnded;
 import resnyx.messenger.videochat.VideoChatParticipantInvited;
@@ -18,7 +17,6 @@ import resnyx.passport.PassportData;
 import resnyx.payments.Invoice;
 import resnyx.payments.RefundedPayment;
 import resnyx.payments.SuccessfulPayment;
-import resnyx.rich.RichMessage;
 import resnyx.stickers.Sticker;
 import resnyx.util.UnixTimeDeserializer;
 import tools.jackson.databind.annotation.JsonDeserialize;
@@ -88,6 +86,19 @@ public final class Message implements MaybeInaccessibleMessage {
      */
     @JsonProperty("sender_tag")
     private String senderTag;
+
+    /**
+     * Optional. For ephemeral messages, the user who received the message
+     */
+    @JsonProperty("receiver_user")
+    private User receiverUser;
+
+    /**
+     * Optional. For ephemeral messages, identifier of the ephemeral message inside this chat.
+     * The identifier may be reused for another ephemeral message after the message is deleted or expires.
+     */
+    @JsonProperty("ephemeral_message_id")
+    private Long ephemeralMessageId;
 
     /**
      * Date the message was sent in Unix time
@@ -569,6 +580,18 @@ public final class Message implements MaybeInaccessibleMessage {
      */
     @JsonProperty("checklist_tasks_added")
     private ChecklistTasksAdded checklistTasksAdded;
+
+    /**
+     * Optional. Service message: chat added to a Community
+     */
+    @JsonProperty("community_chat_added")
+    private CommunityChatAdded communityChatAdded;
+
+    /**
+     * Optional. Service message: chat removed from a Community
+     */
+    @JsonProperty("community_chat_removed")
+    private CommunityChatRemoved communityChatRemoved;
 
     /**
      * Optional. Service message: the price for paid messages in the corresponding direct messages chat of a channel has changed

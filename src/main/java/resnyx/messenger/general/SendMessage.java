@@ -32,18 +32,25 @@ public final class SendMessage implements TgMethod {
     private final String chatId;
 
     /**
-     * Unique identifier for the target message thread (topic) of a forum;
-     * for forum supergroups and private chats of bots with forum topic mode enabled only
-     */
-    @JsonProperty("message_thread_id")
-    private Long messageThreadId;
-
-    /**
      * Identifier of the direct messages topic to which the message will be sent;
      * required if the message is sent to a direct messages chat
      */
     @JsonProperty("direct_messages_topic_id")
     private Integer directMessagesTopicId;
+
+    /**
+     * For outgoing ephemeral messages, unique identifier of the user who will receive the message;
+     * for group and supergroup chats only. It is not guaranteed that the user will receive the message,
+     * especially if they are offline. See ephemeral message sending for more details.
+     */
+    @JsonProperty("receiver_user_id")
+    private Long receiverUserId;
+
+    /**
+     * For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+     */
+    @JsonProperty("callback_query_id")
+    private String callbackQueryId;
 
     /**
      * Text of the message to be sent, 1-4096 characters after entities parsing

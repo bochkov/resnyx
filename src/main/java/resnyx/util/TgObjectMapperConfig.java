@@ -8,8 +8,13 @@ import java.util.function.Consumer;
 
 public final class TgObjectMapperConfig implements Consumer<JsonMapper.Builder> {
     @Override
-    public void accept(JsonMapper.Builder builder) {
-        builder.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
-                .changeDefaultPropertyInclusion(pi -> pi.withContentInclusion(JsonInclude.Include.NON_NULL));
+    public void accept(JsonMapper.Builder mapperBuilder) {
+        mapperBuilder
+                .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
+                .changeDefaultPropertyInclusion(propertyInclusion ->
+                        propertyInclusion
+                                .withContentInclusion(JsonInclude.Include.NON_NULL)
+                                .withValueInclusion(JsonInclude.Include.NON_NULL)
+                );
     }
 }
